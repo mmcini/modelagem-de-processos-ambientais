@@ -179,7 +179,7 @@ vector <- c(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1)
 matrix(vector, ncol = 4)
 ```
 
-####
+###
 
 Assim, da pra usar a função `rep` pra não ter que fazer na mão. É só repetir aquela sequência
 tantas vezes quanto necessário, e juntar um número um no final. Por exemplo, pra fazer aquela
