@@ -1,6 +1,8 @@
 name: "exercicios"
 output_dir: "docs"
 navbar:
+  title: "Exercícios"
+  type: inverse
   left:
     - text: "Vetores e Matrizes"
       href: vetores_matrizes.html
