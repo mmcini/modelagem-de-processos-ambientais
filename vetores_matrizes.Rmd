@@ -82,6 +82,7 @@ negativo).
 
 ```{r}
 islands_ranking <- rank(-islands)
+islands_ranking
 ```
 
 Depois, é só pegar o dado com o título "South America" e ver o ranking.
@@ -93,7 +94,7 @@ islands_ranking["South America"]
 # Exercício 7
 ### Crie matrizes 4x4 que contenham os seguintes valores em todas as suas posições [i, j]: 5, T, NaN e -89. Cheque os atributos. {.tabset .tabset-fade .tabset-pills}
 
-Podemos criar vetores os valores do enunciado e depois transformar em
+Podemos criar vetores com os valores do enunciado e depois transformar em
 matrizes. São 4x4, então vão repetir os dados 16 vezes. A função `rep` repete
 um valor n vezes: `rep(valor, nro de vezes)`.
 

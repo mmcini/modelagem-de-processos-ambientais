@@ -354,9 +354,34 @@
 ## Tierra del Fuego            Timor        Vancouver         Victoria 
 ##             12.0              3.0              1.0             32.5</code></pre>
 <p>Mas se a gente quiser dar o ranking número 1 para o território de maior área, é só para inverter os dados usando o sinal de (-). Assim, o menor valor será o que era o maior (agora será o mais negativo).</p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb16-1" title="1">islands_ranking &lt;-<span class="st"> </span><span class="kw">rank</span>(<span class="op">-</span>islands)</a></code></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb16-1" title="1">islands_ranking &lt;-<span class="st"> </span><span class="kw">rank</span>(<span class="op">-</span>islands)</a>
+<a class="sourceLine" id="cb16-2" title="2">islands_ranking</a></code></pre></div>
+<pre><code>##           Africa       Antarctica             Asia        Australia 
+##              2.0              5.0              1.0              7.0 
+##     Axel Heiberg           Baffin            Banks           Borneo 
+##             39.0             12.0             35.0             10.0 
+##          Britain          Celebes            Celon             Cuba 
+##             15.0             18.0             34.0             22.5 
+##            Devon        Ellesmere           Europe        Greenland 
+##             36.0             16.5              6.0              8.0 
+##           Hainan       Hispaniola         Hokkaido           Honshu 
+##             46.0             29.5             29.5             14.0 
+##          Iceland          Ireland             Java           Kyushu 
+##             25.0             27.0             20.0             43.5 
+##            Luzon       Madagascar         Melville         Mindanao 
+##             24.0             11.0             39.0             26.0 
+##         Moluccas      New Britain       New Guinea  New Zealand (N) 
+##             31.5             41.5              9.0             21.0 
+##  New Zealand (S)     Newfoundland    North America    Novaya Zemlya 
+##             19.0             22.5              3.0             28.0 
+##  Prince of Wales         Sakhalin    South America      Southampton 
+##             46.0             31.5              4.0             39.0 
+##      Spitsbergen          Sumatra           Taiwan         Tasmania 
+##             41.5             13.0             43.5             33.0 
+## Tierra del Fuego            Timor        Vancouver         Victoria 
+##             37.0             46.0             48.0             16.5</code></pre>
 <p>Depois, é só pegar o dado com o título “South America” e ver o ranking.</p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb17-1" title="1">islands_ranking[<span class="st">&quot;South America&quot;</span>]</a></code></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb18-1" title="1">islands_ranking[<span class="st">&quot;South America&quot;</span>]</a></code></pre></div>
 <pre><code>## South America 
 ##             4</code></pre>
 </div>
@@ -365,46 +390,46 @@
 <h1>Exercício 7</h1>
 <div id="crie-matrizes-4x4-que-contenham-os-seguintes-valores-em-todas-as-suas-posições-i-j-5-t-nan-e--89.-cheque-os-atributos." class="section level3 tabset tabset-fade tabset-pills">
 <h3>Crie matrizes 4x4 que contenham os seguintes valores em todas as suas posições [i, j]: 5, T, NaN e -89. Cheque os atributos.</h3>
-<p>Podemos criar vetores os valores do enunciado e depois transformar em matrizes. São 4x4, então vão repetir os dados 16 vezes. A função <code>rep</code> repete um valor n vezes: <code>rep(valor, nro de vezes)</code>.</p>
-<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb19-1" title="1"><span class="co"># repetindo cada valor 16 vezes</span></a>
-<a class="sourceLine" id="cb19-2" title="2">vec1 &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="dv">5</span>, <span class="dv">16</span>)</a>
-<a class="sourceLine" id="cb19-3" title="3">vec2 &lt;-<span class="st"> </span><span class="kw">rep</span>(T, <span class="dv">16</span>)</a>
-<a class="sourceLine" id="cb19-4" title="4">vec3 &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="ot">NaN</span>, <span class="dv">16</span>)</a>
-<a class="sourceLine" id="cb19-5" title="5">vec4 &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="op">-</span><span class="dv">89</span>, <span class="dv">16</span>)</a></code></pre></div>
+<p>Podemos criar vetores com os valores do enunciado e depois transformar em matrizes. São 4x4, então vão repetir os dados 16 vezes. A função <code>rep</code> repete um valor n vezes: <code>rep(valor, nro de vezes)</code>.</p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb20-1" title="1"><span class="co"># repetindo cada valor 16 vezes</span></a>
+<a class="sourceLine" id="cb20-2" title="2">vec1 &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="dv">5</span>, <span class="dv">16</span>)</a>
+<a class="sourceLine" id="cb20-3" title="3">vec2 &lt;-<span class="st"> </span><span class="kw">rep</span>(T, <span class="dv">16</span>)</a>
+<a class="sourceLine" id="cb20-4" title="4">vec3 &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="ot">NaN</span>, <span class="dv">16</span>)</a>
+<a class="sourceLine" id="cb20-5" title="5">vec4 &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="op">-</span><span class="dv">89</span>, <span class="dv">16</span>)</a></code></pre></div>
 <p>Os vetores são:</p>
 <div id="vetor-1" class="section level4">
 <h4>Vetor 1</h4>
-<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb20-1" title="1">vec1</a></code></pre></div>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb21-1" title="1">vec1</a></code></pre></div>
 <pre><code>##  [1] 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5</code></pre>
 </div>
 <div id="vetor-2" class="section level4">
 <h4>Vetor 2</h4>
-<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb22-1" title="1">vec2</a></code></pre></div>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb23-1" title="1">vec2</a></code></pre></div>
 <pre><code>##  [1] TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE
 ## [16] TRUE</code></pre>
 </div>
 <div id="vetor-3" class="section level4">
 <h4>Vetor 3</h4>
-<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb24-1" title="1">vec3</a></code></pre></div>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb25-1" title="1">vec3</a></code></pre></div>
 <pre><code>##  [1] NaN NaN NaN NaN NaN NaN NaN NaN NaN NaN NaN NaN NaN NaN NaN NaN</code></pre>
 </div>
 <div id="vetor-4" class="section level4">
 <h4>Vetor 4</h4>
-<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb26-1" title="1">vec4</a></code></pre></div>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb27-1" title="1">vec4</a></code></pre></div>
 <pre><code>##  [1] -89 -89 -89 -89 -89 -89 -89 -89 -89 -89 -89 -89 -89 -89 -89 -89</code></pre>
 </div>
 </div>
 <div id="section" class="section level3 tabset tabset-fade tabset-pills">
 <h3></h3>
 <p>Depois, é só transformar em matrizes.</p>
-<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb28-1" title="1">mat1 &lt;-<span class="st"> </span><span class="kw">matrix</span>(vec1, <span class="dt">ncol =</span> <span class="dv">4</span>)</a>
-<a class="sourceLine" id="cb28-2" title="2">mat2 &lt;-<span class="st"> </span><span class="kw">matrix</span>(vec2, <span class="dt">ncol =</span> <span class="dv">4</span>)</a>
-<a class="sourceLine" id="cb28-3" title="3">mat3 &lt;-<span class="st"> </span><span class="kw">matrix</span>(vec3, <span class="dt">ncol =</span> <span class="dv">4</span>)</a>
-<a class="sourceLine" id="cb28-4" title="4">mat4 &lt;-<span class="st"> </span><span class="kw">matrix</span>(vec4, <span class="dt">ncol =</span> <span class="dv">4</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb29-1" title="1">mat1 &lt;-<span class="st"> </span><span class="kw">matrix</span>(vec1, <span class="dt">ncol =</span> <span class="dv">4</span>)</a>
+<a class="sourceLine" id="cb29-2" title="2">mat2 &lt;-<span class="st"> </span><span class="kw">matrix</span>(vec2, <span class="dt">ncol =</span> <span class="dv">4</span>)</a>
+<a class="sourceLine" id="cb29-3" title="3">mat3 &lt;-<span class="st"> </span><span class="kw">matrix</span>(vec3, <span class="dt">ncol =</span> <span class="dv">4</span>)</a>
+<a class="sourceLine" id="cb29-4" title="4">mat4 &lt;-<span class="st"> </span><span class="kw">matrix</span>(vec4, <span class="dt">ncol =</span> <span class="dv">4</span>)</a></code></pre></div>
 <p>Os resultados sao:</p>
 <div id="matriz-1" class="section level4">
 <h4>Matriz 1</h4>
-<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb29-1" title="1">mat1</a></code></pre></div>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb30-1" title="1">mat1</a></code></pre></div>
 <pre><code>##      [,1] [,2] [,3] [,4]
 ## [1,]    5    5    5    5
 ## [2,]    5    5    5    5
@@ -413,7 +438,7 @@
 </div>
 <div id="matriz-2" class="section level4">
 <h4>Matriz 2</h4>
-<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb31-1" title="1">mat2</a></code></pre></div>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb32-1" title="1">mat2</a></code></pre></div>
 <pre><code>##      [,1] [,2] [,3] [,4]
 ## [1,] TRUE TRUE TRUE TRUE
 ## [2,] TRUE TRUE TRUE TRUE
@@ -422,7 +447,7 @@
 </div>
 <div id="matriz-3" class="section level4">
 <h4>Matriz 3</h4>
-<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb33-1" title="1">mat3</a></code></pre></div>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb34-1" title="1">mat3</a></code></pre></div>
 <pre><code>##      [,1] [,2] [,3] [,4]
 ## [1,]  NaN  NaN  NaN  NaN
 ## [2,]  NaN  NaN  NaN  NaN
@@ -431,7 +456,7 @@
 </div>
 <div id="matriz-4" class="section level4">
 <h4>Matriz 4</h4>
-<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb35-1" title="1">mat4</a></code></pre></div>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb36-1" title="1">mat4</a></code></pre></div>
 <pre><code>##      [,1] [,2] [,3] [,4]
 ## [1,]  -89  -89  -89  -89
 ## [2,]  -89  -89  -89  -89
@@ -452,8 +477,8 @@
 <div id="exemplo-3x3" class="section level4">
 <h4>Exemplo 3x3</h4>
 <p>Pra ilustrar, uma matriz 3x3, por exemplo, seria 1 0 0 0 1 0 0 0 1, repete 1 e 3 zeros 2 vezes e termina com 1.</p>
-<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb37-1" title="1">vector &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>)</a>
-<a class="sourceLine" id="cb37-2" title="2"><span class="kw">matrix</span>(vector, <span class="dt">ncol =</span> <span class="dv">3</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb38-1" title="1">vector &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb38-2" title="2"><span class="kw">matrix</span>(vector, <span class="dt">ncol =</span> <span class="dv">3</span>)</a></code></pre></div>
 <pre><code>##      [,1] [,2] [,3]
 ## [1,]    1    0    0
 ## [2,]    0    1    0
@@ -462,8 +487,8 @@
 <div id="exemplo-4x4" class="section level4">
 <h4>Exemplo 4x4</h4>
 <p>Uma matriz 4x4, seria 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1, repetindo 1 e 4 zeros 3 vezes e terminando com 1.</p>
-<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb39-1" title="1">vector &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>)</a>
-<a class="sourceLine" id="cb39-2" title="2"><span class="kw">matrix</span>(vector, <span class="dt">ncol =</span> <span class="dv">4</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb40-1" title="1">vector &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb40-2" title="2"><span class="kw">matrix</span>(vector, <span class="dt">ncol =</span> <span class="dv">4</span>)</a></code></pre></div>
 <pre><code>##      [,1] [,2] [,3] [,4]
 ## [1,]    1    0    0    0
 ## [2,]    0    1    0    0
@@ -474,12 +499,12 @@
 <div id="section-2" class="section level3">
 <h3></h3>
 <p>Assim, é possível usar a função <code>rep</code> para não ter que fazer na mão. É só repetir aquela sequência tantas vezes quanto necessário e juntar um número 1 no final. Por exemplo, para criar uma matriz identidade 4x4, seria:</p>
-<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb41-1" title="1"><span class="co"># repete 1 sequencia 1 0 0 0 tres vezes e junta o numero 1 no final</span></a>
-<a class="sourceLine" id="cb41-2" title="2">sequencia &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>)</a>
-<a class="sourceLine" id="cb41-3" title="3">vector &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="kw">rep</span>(sequencia, <span class="dv">3</span>), <span class="dv">1</span>)</a>
-<a class="sourceLine" id="cb41-4" title="4"></a>
-<a class="sourceLine" id="cb41-5" title="5"><span class="co"># cria a matriz</span></a>
-<a class="sourceLine" id="cb41-6" title="6"><span class="kw">matrix</span>(vector, <span class="dt">ncol =</span> <span class="dv">4</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb42-1" title="1"><span class="co"># repete 1 sequencia 1 0 0 0 tres vezes e junta o numero 1 no final</span></a>
+<a class="sourceLine" id="cb42-2" title="2">sequencia &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>)</a>
+<a class="sourceLine" id="cb42-3" title="3">vector &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="kw">rep</span>(sequencia, <span class="dv">3</span>), <span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb42-4" title="4"></a>
+<a class="sourceLine" id="cb42-5" title="5"><span class="co"># cria a matriz</span></a>
+<a class="sourceLine" id="cb42-6" title="6"><span class="kw">matrix</span>(vector, <span class="dt">ncol =</span> <span class="dv">4</span>)</a></code></pre></div>
 <pre><code>##      [,1] [,2] [,3] [,4]
 ## [1,]    1    0    0    0
 ## [2,]    0    1    0    0
@@ -491,7 +516,7 @@
 <p>Por curiosidade, é possível fazer com <code>rep</code> para exercitar o raciocínio, mas existe a função <code>diag</code> que faz justamente a mesma coisa sem dar trabalho:</p>
 <div id="matriz-3x3" class="section level4">
 <h4>Matriz 3x3</h4>
-<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb43-1" title="1"><span class="kw">diag</span>(<span class="dv">3</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb44-1" title="1"><span class="kw">diag</span>(<span class="dv">3</span>)</a></code></pre></div>
 <pre><code>##      [,1] [,2] [,3]
 ## [1,]    1    0    0
 ## [2,]    0    1    0
@@ -499,7 +524,7 @@
 </div>
 <div id="matriz-4x4" class="section level4">
 <h4>Matriz 4x4</h4>
-<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb45-1" title="1"><span class="kw">diag</span>(<span class="dv">4</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb46-1" title="1"><span class="kw">diag</span>(<span class="dv">4</span>)</a></code></pre></div>
 <pre><code>##      [,1] [,2] [,3] [,4]
 ## [1,]    1    0    0    0
 ## [2,]    0    1    0    0
