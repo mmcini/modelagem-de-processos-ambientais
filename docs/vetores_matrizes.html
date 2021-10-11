@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+
+
+<title>Exercícios - Vetores e Matrizes</title>
+
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/cosmo.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/textmate.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+<style type="text/css">code{white-space: pre;}</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+
+
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+pre code {
+  padding: 0;
+}
+</style>
+
+
+<style type="text/css">
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #adb5bd;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script type="text/javascript">
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.tab('show');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+@media print {
+.toc-content {
+  /* see https://github.com/w3c/csswg-drafts/issues/4434 */
+  float: right;
+}
+}
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html"></a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="vetores_matrizes.html">Vetores e Matrizes</a>
+</li>
+<li>
+  <a href="estat_descritiva.html">Estatística Descritiva</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div id="header">
+
+
+
+<h1 class="title toc-ignore">Exercícios - Vetores e Matrizes</h1>
+
+</div>
+
+
+<div id="exercício-1" class="section level1">
+<h1>Exercício 1</h1>
+<div id="crie-o-vetor-x-3-3.1-3.26.-note-que-o-vetor-deve-ir-até-o-número-6-num-incremento-de-0.1" class="section level2">
+<h2>Crie o vetor x = 3, 3.1, 3.2,…,6. Note que o vetor deve ir até o número 6 num incremento de 0.1</h2>
+<p>A documentação diz:</p>
+<pre class="r"><code>seq(from = 1, to = 1, by = ((to - from) / (length.out - 1)),
+         length.out = NULL, along.with = NULL, ...)</code></pre>
+<p>Então tem que ser uma sequência de (from) 3 até (to) 6, de (by) 0.1 em 0.1.</p>
+<pre class="r"><code>x &lt;- seq(from = 3, to = 6, by = 0.1)
+x</code></pre>
+<pre><code>##  [1] 3.0 3.1 3.2 3.3 3.4 3.5 3.6 3.7 3.8 3.9 4.0 4.1 4.2 4.3 4.4 4.5 4.6 4.7 4.8
+## [20] 4.9 5.0 5.1 5.2 5.3 5.4 5.5 5.6 5.7 5.8 5.9 6.0</code></pre>
+</div>
+</div>
+<div id="exercício-2" class="section level1">
+<h1>Exercício 2</h1>
+<div id="calcule-excosx-para-o-vetor-anterior-atribua-ao-objeto-solução.-descreva-os-atributos-desse-novo-objeto-criado" class="section level2">
+<h2>Calcule e<sup>x</sup>cos(x) para o vetor anterior, atribua ao objeto solução. Descreva os atributos desse novo objeto criado;</h2>
+<p>Sim, é só fazer exp(x) * cos(x).</p>
+<pre class="r"><code>exp(x) * cos(x)</code></pre>
+<pre><code>##  [1] -19.884531 -22.178753 -24.490697 -26.773182 -28.969238 -31.011186
+##  [7] -32.819775 -34.303360 -35.357194 -35.862834 -35.687732 -34.685042
+## [13] -32.693695 -29.538816 -25.032529 -18.975233 -11.157417  -1.362099
+## [19]  10.632038  25.046705  42.099201  61.996630  84.929067 111.061586
+## [25] 140.525075 173.405776 209.733494 249.468441 292.486707 338.564378
+## [31] 387.360340</code></pre>
+</div>
+</div>
+<div id="exercício-4" class="section level1">
+<h1>Exercício 4</h1>
+<div id="crie-um-vetor-numérico-de-tamanho-12-e-o-transforme-em-uma-matriz." class="section level2">
+<h2>Crie um vetor numérico de tamanho 12 e o transforme em uma matriz.</h2>
+<p>Sim, é só colocar <code>nrow</code>, ou <code>ncol</code> se quiser escolher o número de colunas. Mas ele vai organizar por coluna (1 a 4 vai ser coluna 1, 5 a 8 coluna 2, etc.). Da pra organizar por linha também com <code>byrow = TRUE</code>.</p>
+<pre class="r"><code># por linha
+vetor &lt;- c(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12)
+matrix(data = vetor, nrow = 4)</code></pre>
+<pre><code>##      [,1] [,2] [,3]
+## [1,]    1    5    9
+## [2,]    2    6   10
+## [3,]    3    7   11
+## [4,]    4    8   12</code></pre>
+<pre class="r"><code>#por coluna:
+vetor &lt;- c(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12)
+matrix(data = vetor, nrow = 4, byrow = TRUE)</code></pre>
+<pre><code>##      [,1] [,2] [,3]
+## [1,]    1    2    3
+## [2,]    4    5    6
+## [3,]    7    8    9
+## [4,]   10   11   12</code></pre>
+</div>
+</div>
+<div id="exercício-5" class="section level1">
+<h1>Exercício 5</h1>
+<div id="informe-as-três-maiores-áreas-do-dataset-islands-esse-objeto-estará-dentro-do-seu-ambiente-r." class="section level2">
+<h2>Informe as três maiores áreas do dataset islands (esse objeto estará dentro do seu ambiente R).</h2>
+<p>Islands é um conjundo de dados que vem com o pacote <code>datasets</code>.</p>
+<pre class="r"><code>library(datasets)
+
+# Da pra usar `sort` pra colocar  os dados do maior
+# para o menor valor (decreasing = TRUE). Sem o
+# decreasing = TRUE ele organiza do menor para o maior.
+dados_decrescentes &lt;- sort(islands, decreasing = TRUE)
+dados_decrescentes</code></pre>
+<pre><code>##             Asia           Africa    North America    South America 
+##            16988            11506             9390             6795 
+##       Antarctica           Europe        Australia        Greenland 
+##             5500             3745             2968              840 
+##       New Guinea           Borneo       Madagascar           Baffin 
+##              306              280              227              184 
+##          Sumatra           Honshu          Britain        Ellesmere 
+##              183               89               84               82 
+##         Victoria          Celebes  New Zealand (S)             Java 
+##               82               73               58               49 
+##  New Zealand (N)             Cuba     Newfoundland            Luzon 
+##               44               43               43               42 
+##          Iceland         Mindanao          Ireland    Novaya Zemlya 
+##               40               36               33               32 
+##       Hispaniola         Hokkaido         Moluccas         Sakhalin 
+##               30               30               29               29 
+##         Tasmania            Celon            Banks            Devon 
+##               26               25               23               21 
+## Tierra del Fuego     Axel Heiberg         Melville      Southampton 
+##               19               16               16               16 
+##      New Britain      Spitsbergen           Kyushu           Taiwan 
+##               15               15               14               14 
+##           Hainan  Prince of Wales            Timor        Vancouver 
+##               13               13               13               12</code></pre>
+<pre class="r"><code># ai da pra usar pra pegar os tres primeiros valores
+dados_decrescentes[1:3]</code></pre>
+<pre><code>##          Asia        Africa North America 
+##         16988         11506          9390</code></pre>
+</div>
+</div>
+<div id="exercício-6" class="section level1">
+<h1>Exercício 6</h1>
+<div id="indique-um-código-que-trará-a-posição-do-ranking-da-américa-do-sul-no-objeto-islands" class="section level2">
+<h2>Indique um código que trará a posição do ranking da América do Sul no objeto islands;</h2>
+<p>Da pra usar <code>rank</code> para saber o ranking dos dados. Mas a função dá o menor rank para o menor valor. Então Vancouver, que tem a menor área (olha o ex. 5), vai ter o menor rank (1):</p>
+<pre class="r"><code>rank(islands)</code></pre>
+<pre><code>##           Africa       Antarctica             Asia        Australia 
+##             47.0             44.0             48.0             42.0 
+##     Axel Heiberg           Baffin            Banks           Borneo 
+##             10.0             37.0             14.0             39.0 
+##          Britain          Celebes            Celon             Cuba 
+##             34.0             31.0             15.0             26.5 
+##            Devon        Ellesmere           Europe        Greenland 
+##             13.0             32.5             43.0             41.0 
+##           Hainan       Hispaniola         Hokkaido           Honshu 
+##              3.0             19.5             19.5             35.0 
+##          Iceland          Ireland             Java           Kyushu 
+##             24.0             22.0             29.0              5.5 
+##            Luzon       Madagascar         Melville         Mindanao 
+##             25.0             38.0             10.0             23.0 
+##         Moluccas      New Britain       New Guinea  New Zealand (N) 
+##             17.5              7.5             40.0             28.0 
+##  New Zealand (S)     Newfoundland    North America    Novaya Zemlya 
+##             30.0             26.5             46.0             21.0 
+##  Prince of Wales         Sakhalin    South America      Southampton 
+##              3.0             17.5             45.0             10.0 
+##      Spitsbergen          Sumatra           Taiwan         Tasmania 
+##              7.5             36.0              5.5             16.0 
+## Tierra del Fuego            Timor        Vancouver         Victoria 
+##             12.0              3.0              1.0             32.5</code></pre>
+<p>Mas se a gente quiser dar o rank número um para o território de maior área, da para inverter os dados usando o sinal de (-). Assim o menor valor vai ser o que era o maior (agora será o mais negativo).</p>
+<pre class="r"><code>islands_ranking &lt;- rank(-islands)</code></pre>
+<p>Depois é só pegar o dado com o título “South America”</p>
+<pre class="r"><code>islands_ranking[&quot;South America&quot;]</code></pre>
+<pre><code>## South America 
+##             4</code></pre>
+</div>
+</div>
+<div id="exercício-7" class="section level1">
+<h1>Exercício 7</h1>
+<div id="crie-matrizes-4x4-que-contenham-os-seguintes-valores-em-todas-as-suas-posições-i-j-5-t-nan-e--89.-cheque-os-atributos." class="section level2 tabset">
+<h2>Crie matrizes 4x4 que contenham os seguintes valores em todas as suas posições [i, j]: 5, T, NaN e -89. Cheque os atributos.</h2>
+<p>A gente pode criar uns vetores com aqueles valores e depois transformar em matrizes. São 4x4, então vão repetir os dados 16 vezes. A função <code>rep</code> repete um valor n vezes: <code>rep(valor, n de vezes)</code>. Mas da pra digitar na mão também.</p>
+<pre class="r"><code># repetindo cada valor 16 vezes
+vec1 &lt;- rep(5, 16)
+vec2 &lt;- rep(T, 16)
+vec3 &lt;- rep(NaN, 16)
+vec4 &lt;- rep(-89, 16)</code></pre>
+<p>Os vetores são:</p>
+<div id="vetor-1" class="section level3">
+<h3>Vetor 1</h3>
+<pre class="r"><code>vec1</code></pre>
+<pre><code>##  [1] 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5</code></pre>
+</div>
+<div id="vetor-2" class="section level3">
+<h3>Vetor 2</h3>
+<pre class="r"><code>vec2</code></pre>
+<pre><code>##  [1] TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE
+## [16] TRUE</code></pre>
+</div>
+<div id="vetor-3" class="section level3">
+<h3>Vetor 3</h3>
+<pre class="r"><code>vec3</code></pre>
+<pre><code>##  [1] NaN NaN NaN NaN NaN NaN NaN NaN NaN NaN NaN NaN NaN NaN NaN NaN</code></pre>
+</div>
+<div id="vetor-4" class="section level3">
+<h3>Vetor 4</h3>
+<pre class="r"><code>vec4</code></pre>
+<pre><code>##  [1] -89 -89 -89 -89 -89 -89 -89 -89 -89 -89 -89 -89 -89 -89 -89 -89</code></pre>
+</div>
+</div>
+<div id="section" class="section level2 tabset">
+<h2></h2>
+<p>Depois é só transformar em matrizes.</p>
+<pre class="r"><code>mat1 &lt;- matrix(vec1, ncol = 4)
+mat2 &lt;- matrix(vec2, ncol = 4)
+mat3 &lt;- matrix(vec3, ncol = 4)
+mat4 &lt;- matrix(vec4, ncol = 4)</code></pre>
+<p>Os resultados sao:</p>
+<div id="matriz-1" class="section level3">
+<h3>Matriz 1</h3>
+<pre class="r"><code>mat1</code></pre>
+<pre><code>##      [,1] [,2] [,3] [,4]
+## [1,]    5    5    5    5
+## [2,]    5    5    5    5
+## [3,]    5    5    5    5
+## [4,]    5    5    5    5</code></pre>
+</div>
+<div id="matriz-2" class="section level3">
+<h3>Matriz 2</h3>
+<pre class="r"><code>mat2</code></pre>
+<pre><code>##      [,1] [,2] [,3] [,4]
+## [1,] TRUE TRUE TRUE TRUE
+## [2,] TRUE TRUE TRUE TRUE
+## [3,] TRUE TRUE TRUE TRUE
+## [4,] TRUE TRUE TRUE TRUE</code></pre>
+</div>
+<div id="matriz-3" class="section level3">
+<h3>Matriz 3</h3>
+<pre class="r"><code>mat3</code></pre>
+<pre><code>##      [,1] [,2] [,3] [,4]
+## [1,]  NaN  NaN  NaN  NaN
+## [2,]  NaN  NaN  NaN  NaN
+## [3,]  NaN  NaN  NaN  NaN
+## [4,]  NaN  NaN  NaN  NaN</code></pre>
+</div>
+<div id="matriz-4" class="section level3">
+<h3>Matriz 4</h3>
+<pre class="r"><code>mat4</code></pre>
+<pre><code>##      [,1] [,2] [,3] [,4]
+## [1,]  -89  -89  -89  -89
+## [2,]  -89  -89  -89  -89
+## [3,]  -89  -89  -89  -89
+## [4,]  -89  -89  -89  -89</code></pre>
+</div>
+</div>
+<div id="section-1" class="section level2">
+<h2></h2>
+<p>Depois é só inspecionar cada matriz com <code>str</code> ou outra função que dê informações sobre o objeto.</p>
+</div>
+</div>
+<div id="exercício-8" class="section level1">
+<h1>Exercício 8</h1>
+<div id="crie-uma-matriz-identidade-usando-a-função-rep.-transponha-e-multiplique-ambas.-comente-o-resultado." class="section level2 tabset">
+<h2>Crie uma matriz identidade usando a função rep. Transponha e multiplique ambas. Comente o resultado.</h2>
+<p>Não depende da 7. Essa é meio complicada. Uma matriz identidade da pra fazer repetindo 1 e vários zeros várias vezes. Se for uma 4x4 é 1 e quarto zeros (1 0 0 0 0), 5x5 1 e 5 zeros (1 0 0 0 0 0), etc. Depois de repetir esses valores várias vezes, ela termina com 1 de novo.</p>
+<div id="exemplo-3x3" class="section level3">
+<h3>Exemplo 3x3</h3>
+<p>Pra ilustrar, uma matriz 3x3, por exemplo, seria 1 0 0 0 1 0 0 0 1, repete 1 e 3 zeros 2 vezes e termina com 1.</p>
+<pre class="r"><code>vector &lt;- c(1, 0, 0, 0, 1, 0, 0, 0, 1)
+matrix(vector, ncol = 3)</code></pre>
+<pre><code>##      [,1] [,2] [,3]
+## [1,]    1    0    0
+## [2,]    0    1    0
+## [3,]    0    0    1</code></pre>
+</div>
+<div id="exemplo-4x4" class="section level3">
+<h3>Exemplo 4x4</h3>
+<p>Uma 4x4, seria 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1, repetindo 1 e 4 zeros 3 vezes e terminando com 1.</p>
+<pre class="r"><code>vector &lt;- c(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1)
+matrix(vector, ncol = 4)</code></pre>
+<pre><code>##      [,1] [,2] [,3] [,4]
+## [1,]    1    0    0    0
+## [2,]    0    1    0    0
+## [3,]    0    0    1    0
+## [4,]    0    0    0    1</code></pre>
+</div>
+<div id="section-2" class="section level3">
+<h3></h3>
+<p>Assim, da pra usar a função <code>rep</code> pra não ter que fazer na mão. É só repetir aquela sequência tantas vezes quanto necessário, e juntar um número um no final. Por exemplo, pra fazer aquela matriz 4x4, seria:</p>
+<pre class="r"><code># repete 1 sequencia 1 0 0 0 tres vezes e junta o numero 1 no final
+sequencia &lt;- c(1, 0, 0, 0, 0)
+vector &lt;- c(rep(sequencia, 3), 1)
+
+# cria a matriz
+matrix(vector, ncol = 4)</code></pre>
+<pre><code>##      [,1] [,2] [,3] [,4]
+## [1,]    1    0    0    0
+## [2,]    0    1    0    0
+## [3,]    0    0    1    0
+## [4,]    0    0    0    1</code></pre>
+</div>
+</div>
+<div id="section-3" class="section level2 tabset">
+<h2></h2>
+<p>Por curiosidade, ele pediu pra fazer com <code>rep</code> pra exercitar o raciocínio provavelmente. Mas existe a função <code>diag</code> que faz justamente a mesma coisa sem dar trabalho:</p>
+<div id="matriz-3x3" class="section level3">
+<h3>Matriz 3x3</h3>
+<pre class="r"><code>diag(3)</code></pre>
+<pre><code>##      [,1] [,2] [,3]
+## [1,]    1    0    0
+## [2,]    0    1    0
+## [3,]    0    0    1</code></pre>
+</div>
+<div id="matriz-4x4" class="section level3">
+<h3>Matriz 4x4</h3>
+<pre class="r"><code>diag(4)</code></pre>
+<pre><code>##      [,1] [,2] [,3] [,4]
+## [1,]    1    0    0    0
+## [2,]    0    1    0    0
+## [3,]    0    0    1    0
+## [4,]    0    0    0    1</code></pre>
+</div>
+</div>
+</div>
+
+
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open');
+  });
+});
+</script>
+
+<!-- code folding -->
+
+<script>
+$(document).ready(function ()  {
+
+    // temporarily add toc-ignore selector to headers for the consistency with Pandoc
+    $('.unlisted.unnumbered').addClass('toc-ignore')
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_');
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

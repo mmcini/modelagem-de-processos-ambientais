@@ -1,0 +1,15 @@
+name: "exercicios"
+output_dir: "docs"
+navbar:
+  left:
+    - text: "Vetores e Matrizes"
+      href: vetores_matrizes.html
+    - text: "Estatística Descritiva"
+      href: estat_descritiva.html
+output:
+  html_document:
+    theme: cosmo
+    highlight: textmate
+    toc: true
+    toc_float:
+      collapse: false

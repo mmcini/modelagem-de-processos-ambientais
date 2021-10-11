@@ -1,0 +1,141 @@
+---
+title: Exercício - Estatística Descritiva
+output: html_document
+---
+
+# Exercício 1
+## Considere 15 peças com tamanhos diferentes, sejam eles 40, 45,41,48,49,42,47,46,41,40,40,45,46,47,48 cm, calcule:
+
+Os dados são:
+
+```{r}
+dados <- c(40, 45, 41, 48, 49, 42, 47, 46, 41, 40, 40, 45, 46, 47, 48)
+```
+
+## a) Calcule a média, variância
+
+```{r}
+mean(dados); var(dados)
+```
+
+## b) Utilize a função pnorm() para calcular a função de densidade acumulada (P(x)) para toda a série, o que significa o primeiro valor dessa série?
+
+A função `pnorm` retorna a probabilidade acumulada de um população. Pra usar
+tem que informar qual a média e qual o desvio padrão da população:
+
+```{r}
+media <- mean(dados)
+desvio <- sd(dados)
+pnorm(dados, mean = media, sd = desvio)
+```
+
+O primeiro valor dos resultados é a probabilidade de um valor ser menor que
+40 (o primeiro valor dos `dados`)
+
+## c) Normalize os dados com média zero e desvio padrão unitário, utilize apenas as funções mean() e sd() para tal
+
+Os dados podem ser normalizados com a diferença de cada valor até a média dividido pelo
+desvio padrão, com a expressão: $$\frac{x-\overline{X}}{S}$$
+
+Onde $x$ é cada valor, $\overline{X}$ é a média e $S$ o desivio padrão. Então da pra fazer:
+
+```{r}
+dados_normalizados <- (dados - media) / desvio
+dados_normalizados
+```
+
+Essa expressão dá os valores do eixo x para uma distribuição de média zero e desvio
+padrão igual a 1. Dá pra visualizar assim:
+
+```{r}
+plot(density(dados_normalizados))
+```
+
+## Calcule os intervalos de confiança da média
+
+Cada valor do resultado do item anterior é o valor z (o eixo x) dos dados normalizados.
+O intervalo de confiança é calculado por: $$IC = z \times \frac{S}{\sqrt{n}}$$
+
+Considerando um intervalo de confiança de 95%, como ele explicou na aula,
+o z de 95% em uma distribuição normal é $\pm 1,96$. Então é só fazer:
+
+```{r}
+# numero de amostras, o "tamanho" (length) dos dados
+n <- length(dados)
+ic <- 1.96 * desvio / sqrt(n)
+
+media; media + ic; media - ic
+```
+
+As amostras que tenham entre esses valores de média tem 95% de
+probabilidade de pertencerem à essa população. Dá pra visualizar:
+
+```{r}
+plot(density(dados_normalizados))  + abline(v = ic) + abline(v = -ic)
+```
+
+## Teste se essa distribuição é normal. Discuta.
+
+Pra testar a normalidade é possível usar o teste de Shapiro-Wilk. A hipótese
+do teste é de que a distribuição é normal. Se o p-valor for maior que 0,05
+aceita-se a hipótese nula, a distruição é normal. Se for menor, rejeita-se a
+hipótese, a distribuição não é normal.
+
+```{r}
+shapiro.test(dados_normalizados)
+```
+
+O p-valor é menor que 0,05, então a distribuição não é normal (dá pra ver
+nos gráficos acima que não é, mesmo sem o teste)
+
+# Exercício 2
+## Utilizando o dataset mtcars:
+
+mtcars é um dataset que vem junto com o R. Dá para usar para fazer
+testes/treinar. Para ver o dataset é só usar `mtcars`:
+
+```{r}
+# `head` para ver apenas o cabecalho dos dados
+head(mtcars)
+```
+
+## a) Qual a estrutura desse objeto? Quais são os tipos de vetores contidos nesse objeto?
+
+Para ver a estrutura, usar `str`:
+
+```{r}
+str(mtcars)
+```
+
+## b) Calcule uma matriz de correlação (correlograma) para toda a série, discuta 2 pares a sua escolha
+
+Para calcular a matriz de correlação, usar `cor`:
+
+```{r, results = "hide"}
+cor(mtcars)
+```
+```{r, echo = FALSE}
+knitr::kable(round(cor(mtcars), 2))
+```
+## c) Dos pares escolhidos, podemos dizer que são estaticamente significativos em 5% de significância? Discuta.
+
+A hipótese do teste de correlação de pearson é de que não há correlação significativa
+entre dois dados. Assim, se o p-valor for maior que 0,05 (5% de significância),
+aceita-se que não há correlação significativa. Senão, rejeita-se a hipótese e
+considera-se que há sim correlação.
+
+A função `cor` não calcula o p-valor, tem que usar a `cor.test` ou outra que faça
+isso:
+
+```{r}
+# pra calcular as correlacoes:
+cor_mpg_disp <- cor.test(mtcars$mpg, mtcars$disp)
+cor_carb_drat <- cor.test(mtcars$carb, mtcars$drat)
+
+# ver o p-valor:
+cor_mpg_disp$p.value; cor_carb_drat$p.value
+```
+
+ É possível ver que entre as variáveis mpg  e disp, existe correlação
+ significativa a 5% de significância (p $<$ 0,05), mas entre carb e drat, não
+ (p $>$ 0,05).

@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+
+
+<title>Exercício - Estatística Descritiva</title>
+
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/cosmo.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/textmate.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+<style type="text/css">code{white-space: pre;}</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+
+
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+pre code {
+  padding: 0;
+}
+</style>
+
+
+<style type="text/css">
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #adb5bd;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script type="text/javascript">
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.tab('show');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+@media print {
+.toc-content {
+  /* see https://github.com/w3c/csswg-drafts/issues/4434 */
+  float: right;
+}
+}
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html"></a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="vetores_matrizes.html">Vetores e Matrizes</a>
+</li>
+<li>
+  <a href="estat_descritiva.html">Estatística Descritiva</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div id="header">
+
+
+
+<h1 class="title toc-ignore">Exercício - Estatística Descritiva</h1>
+
+</div>
+
+
+<div id="exercício-1" class="section level1">
+<h1>Exercício 1</h1>
+<div id="considere-15-peças-com-tamanhos-diferentes-sejam-eles-40-4541484942474641404045464748-cm-calcule" class="section level2">
+<h2>Considere 15 peças com tamanhos diferentes, sejam eles 40, 45,41,48,49,42,47,46,41,40,40,45,46,47,48 cm, calcule:</h2>
+<p>Os dados são:</p>
+<pre class="r"><code>dados &lt;- c(40, 45, 41, 48, 49, 42, 47, 46, 41, 40, 40, 45, 46, 47, 48)</code></pre>
+</div>
+<div id="a-calcule-a-média-variância" class="section level2">
+<h2>a) Calcule a média, variância</h2>
+<pre class="r"><code>mean(dados); var(dados)</code></pre>
+<pre><code>## [1] 44.33333</code></pre>
+<pre><code>## [1] 10.95238</code></pre>
+</div>
+<div id="b-utilize-a-função-pnorm-para-calcular-a-função-de-densidade-acumulada-px-para-toda-a-série-o-que-significa-o-primeiro-valor-dessa-série" class="section level2">
+<h2>b) Utilize a função pnorm() para calcular a função de densidade acumulada (P(x)) para toda a série, o que significa o primeiro valor dessa série?</h2>
+<p>A função <code>pnorm</code> retorna a probabilidade acumulada de um população. Pra usar tem que informar qual a média e qual o desvio padrão da população:</p>
+<pre class="r"><code>media &lt;- mean(dados)
+desvio &lt;- sd(dados)
+pnorm(dados, mean = media, sd = desvio)</code></pre>
+<pre><code>##  [1] 0.09520175 0.57982432 0.15691446 0.86605664 0.92074617 0.24038825
+##  [7] 0.78981406 0.69273232 0.15691446 0.09520175 0.09520175 0.57982432
+## [13] 0.69273232 0.78981406 0.86605664</code></pre>
+<p>O primeiro valor dos resultados é a probabilidade de um valor ser menor que 40 (o primeiro valor dos <code>dados</code>)</p>
+</div>
+<div id="c-normalize-os-dados-com-média-zero-e-desvio-padrão-unitário-utilize-apenas-as-funções-mean-e-sd-para-tal" class="section level2">
+<h2>c) Normalize os dados com média zero e desvio padrão unitário, utilize apenas as funções mean() e sd() para tal</h2>
+<p>Os dados podem ser normalizados com a diferença de cada valor até a média dividido pelo desvio padrão, com a expressão: <span class="math display">\[\frac{x-\overline{X}}{S}\]</span></p>
+<p>Onde <span class="math inline">\(x\)</span> é cada valor, <span class="math inline">\(\overline{X}\)</span> é a média e <span class="math inline">\(S\)</span> o desivio padrão. Então da pra fazer:</p>
+<pre class="r"><code>dados_normalizados &lt;- (dados - media) / desvio
+dados_normalizados</code></pre>
+<pre><code>##  [1] -1.3093864  0.2014441 -1.0072203  1.1079423  1.4101084 -0.7050542
+##  [7]  0.8057762  0.5036102 -1.0072203 -1.3093864 -1.3093864  0.2014441
+## [13]  0.5036102  0.8057762  1.1079423</code></pre>
+<p>Essa expressão dá os valores do eixo x para uma distribuição de média zero e desvio padrão igual a 1. Dá pra visualizar assim:</p>
+<pre class="r"><code>plot(density(dados_normalizados))</code></pre>
+<p><img src="estat_descritiva_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
+</div>
+<div id="calcule-os-intervalos-de-confiança-da-média" class="section level2">
+<h2>Calcule os intervalos de confiança da média</h2>
+<p>Cada valor do resultado do item anterior é o valor z (o eixo x) dos dados normalizados. O intervalo de confiança é calculado por: <span class="math display">\[IC = z \times \frac{S}{\sqrt{n}}\]</span></p>
+<p>Considerando um intervalo de confiança de 95%, como ele explicou na aula, o z de 95% em uma distribuição normal é <span class="math inline">\(\pm 1,96\)</span>. Então é só fazer:</p>
+<pre class="r"><code># numero de amostras, o &quot;tamanho&quot; (length) dos dados
+n &lt;- length(dados)
+ic &lt;- 1.96 * desvio / sqrt(n)
+
+media; media + ic; media - ic</code></pre>
+<pre><code>## [1] 44.33333</code></pre>
+<pre><code>## [1] 46.00814</code></pre>
+<pre><code>## [1] 42.65853</code></pre>
+<p>As amostras que tenham entre esses valores de média tem 95% de probabilidade de pertencerem à essa população. Dá pra visualizar:</p>
+<pre class="r"><code>plot(density(dados_normalizados))  + abline(v = ic) + abline(v = -ic)</code></pre>
+<p><img src="estat_descritiva_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
+<pre><code>## integer(0)</code></pre>
+</div>
+<div id="teste-se-essa-distribuição-é-normal.-discuta." class="section level2">
+<h2>Teste se essa distribuição é normal. Discuta.</h2>
+<p>Pra testar a normalidade é possível usar o teste de Shapiro-Wilk. A hipótese do teste é de que a distribuição é normal. Se o p-valor for maior que 0,05 aceita-se a hipótese nula, a distruição é normal. Se for menor, rejeita-se a hipótese, a distribuição não é normal.</p>
+<pre class="r"><code>shapiro.test(dados_normalizados)</code></pre>
+<pre><code>## 
+##  Shapiro-Wilk normality test
+## 
+## data:  dados_normalizados
+## W = 0.87911, p-value = 0.04601</code></pre>
+<p>O p-valor é menor que 0,05, então a distribuição não é normal (dá pra ver nos gráficos acima que não é, mesmo sem o teste)</p>
+</div>
+</div>
+<div id="exercício-2" class="section level1">
+<h1>Exercício 2</h1>
+<div id="utilizando-o-dataset-mtcars" class="section level2">
+<h2>Utilizando o dataset mtcars:</h2>
+<p>mtcars é um dataset que vem junto com o R. Dá para usar para fazer testes/treinar. Para ver o dataset é só usar <code>mtcars</code>:</p>
+<pre class="r"><code># `head` para ver apenas o cabecalho dos dados
+head(mtcars)</code></pre>
+<pre><code>##                    mpg cyl disp  hp drat    wt  qsec vs am gear carb
+## Mazda RX4         21.0   6  160 110 3.90 2.620 16.46  0  1    4    4
+## Mazda RX4 Wag     21.0   6  160 110 3.90 2.875 17.02  0  1    4    4
+## Datsun 710        22.8   4  108  93 3.85 2.320 18.61  1  1    4    1
+## Hornet 4 Drive    21.4   6  258 110 3.08 3.215 19.44  1  0    3    1
+## Hornet Sportabout 18.7   8  360 175 3.15 3.440 17.02  0  0    3    2
+## Valiant           18.1   6  225 105 2.76 3.460 20.22  1  0    3    1</code></pre>
+</div>
+<div id="a-qual-a-estrutura-desse-objeto-quais-são-os-tipos-de-vetores-contidos-nesse-objeto" class="section level2">
+<h2>a) Qual a estrutura desse objeto? Quais são os tipos de vetores contidos nesse objeto?</h2>
+<p>Para ver a estrutura, usar <code>str</code>:</p>
+<pre class="r"><code>str(mtcars)</code></pre>
+<pre><code>## &#39;data.frame&#39;:    32 obs. of  11 variables:
+##  $ mpg : num  21 21 22.8 21.4 18.7 18.1 14.3 24.4 22.8 19.2 ...
+##  $ cyl : num  6 6 4 6 8 6 8 4 4 6 ...
+##  $ disp: num  160 160 108 258 360 ...
+##  $ hp  : num  110 110 93 110 175 105 245 62 95 123 ...
+##  $ drat: num  3.9 3.9 3.85 3.08 3.15 2.76 3.21 3.69 3.92 3.92 ...
+##  $ wt  : num  2.62 2.88 2.32 3.21 3.44 ...
+##  $ qsec: num  16.5 17 18.6 19.4 17 ...
+##  $ vs  : num  0 0 1 1 0 1 0 1 1 1 ...
+##  $ am  : num  1 1 1 0 0 0 0 0 0 0 ...
+##  $ gear: num  4 4 4 3 3 3 3 4 4 4 ...
+##  $ carb: num  4 4 1 1 2 1 4 2 2 4 ...</code></pre>
+</div>
+<div id="b-calcule-uma-matriz-de-correlação-correlograma-para-toda-a-série-discuta-2-pares-a-sua-escolha" class="section level2">
+<h2>b) Calcule uma matriz de correlação (correlograma) para toda a série, discuta 2 pares a sua escolha</h2>
+<p>Para calcular a matriz de correlação, usar <code>cor</code>:</p>
+<pre class="r"><code>cor(mtcars)</code></pre>
+<table>
+<thead>
+<tr class="header">
+<th align="left"></th>
+<th align="right">mpg</th>
+<th align="right">cyl</th>
+<th align="right">disp</th>
+<th align="right">hp</th>
+<th align="right">drat</th>
+<th align="right">wt</th>
+<th align="right">qsec</th>
+<th align="right">vs</th>
+<th align="right">am</th>
+<th align="right">gear</th>
+<th align="right">carb</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">mpg</td>
+<td align="right">1.00</td>
+<td align="right">-0.85</td>
+<td align="right">-0.85</td>
+<td align="right">-0.78</td>
+<td align="right">0.68</td>
+<td align="right">-0.87</td>
+<td align="right">0.42</td>
+<td align="right">0.66</td>
+<td align="right">0.60</td>
+<td align="right">0.48</td>
+<td align="right">-0.55</td>
+</tr>
+<tr class="even">
+<td align="left">cyl</td>
+<td align="right">-0.85</td>
+<td align="right">1.00</td>
+<td align="right">0.90</td>
+<td align="right">0.83</td>
+<td align="right">-0.70</td>
+<td align="right">0.78</td>
+<td align="right">-0.59</td>
+<td align="right">-0.81</td>
+<td align="right">-0.52</td>
+<td align="right">-0.49</td>
+<td align="right">0.53</td>
+</tr>
+<tr class="odd">
+<td align="left">disp</td>
+<td align="right">-0.85</td>
+<td align="right">0.90</td>
+<td align="right">1.00</td>
+<td align="right">0.79</td>
+<td align="right">-0.71</td>
+<td align="right">0.89</td>
+<td align="right">-0.43</td>
+<td align="right">-0.71</td>
+<td align="right">-0.59</td>
+<td align="right">-0.56</td>
+<td align="right">0.39</td>
+</tr>
+<tr class="even">
+<td align="left">hp</td>
+<td align="right">-0.78</td>
+<td align="right">0.83</td>
+<td align="right">0.79</td>
+<td align="right">1.00</td>
+<td align="right">-0.45</td>
+<td align="right">0.66</td>
+<td align="right">-0.71</td>
+<td align="right">-0.72</td>
+<td align="right">-0.24</td>
+<td align="right">-0.13</td>
+<td align="right">0.75</td>
+</tr>
+<tr class="odd">
+<td align="left">drat</td>
+<td align="right">0.68</td>
+<td align="right">-0.70</td>
+<td align="right">-0.71</td>
+<td align="right">-0.45</td>
+<td align="right">1.00</td>
+<td align="right">-0.71</td>
+<td align="right">0.09</td>
+<td align="right">0.44</td>
+<td align="right">0.71</td>
+<td align="right">0.70</td>
+<td align="right">-0.09</td>
+</tr>
+<tr class="even">
+<td align="left">wt</td>
+<td align="right">-0.87</td>
+<td align="right">0.78</td>
+<td align="right">0.89</td>
+<td align="right">0.66</td>
+<td align="right">-0.71</td>
+<td align="right">1.00</td>
+<td align="right">-0.17</td>
+<td align="right">-0.55</td>
+<td align="right">-0.69</td>
+<td align="right">-0.58</td>
+<td align="right">0.43</td>
+</tr>
+<tr class="odd">
+<td align="left">qsec</td>
+<td align="right">0.42</td>
+<td align="right">-0.59</td>
+<td align="right">-0.43</td>
+<td align="right">-0.71</td>
+<td align="right">0.09</td>
+<td align="right">-0.17</td>
+<td align="right">1.00</td>
+<td align="right">0.74</td>
+<td align="right">-0.23</td>
+<td align="right">-0.21</td>
+<td align="right">-0.66</td>
+</tr>
+<tr class="even">
+<td align="left">vs</td>
+<td align="right">0.66</td>
+<td align="right">-0.81</td>
+<td align="right">-0.71</td>
+<td align="right">-0.72</td>
+<td align="right">0.44</td>
+<td align="right">-0.55</td>
+<td align="right">0.74</td>
+<td align="right">1.00</td>
+<td align="right">0.17</td>
+<td align="right">0.21</td>
+<td align="right">-0.57</td>
+</tr>
+<tr class="odd">
+<td align="left">am</td>
+<td align="right">0.60</td>
+<td align="right">-0.52</td>
+<td align="right">-0.59</td>
+<td align="right">-0.24</td>
+<td align="right">0.71</td>
+<td align="right">-0.69</td>
+<td align="right">-0.23</td>
+<td align="right">0.17</td>
+<td align="right">1.00</td>
+<td align="right">0.79</td>
+<td align="right">0.06</td>
+</tr>
+<tr class="even">
+<td align="left">gear</td>
+<td align="right">0.48</td>
+<td align="right">-0.49</td>
+<td align="right">-0.56</td>
+<td align="right">-0.13</td>
+<td align="right">0.70</td>
+<td align="right">-0.58</td>
+<td align="right">-0.21</td>
+<td align="right">0.21</td>
+<td align="right">0.79</td>
+<td align="right">1.00</td>
+<td align="right">0.27</td>
+</tr>
+<tr class="odd">
+<td align="left">carb</td>
+<td align="right">-0.55</td>
+<td align="right">0.53</td>
+<td align="right">0.39</td>
+<td align="right">0.75</td>
+<td align="right">-0.09</td>
+<td align="right">0.43</td>
+<td align="right">-0.66</td>
+<td align="right">-0.57</td>
+<td align="right">0.06</td>
+<td align="right">0.27</td>
+<td align="right">1.00</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="c-dos-pares-escolhidos-podemos-dizer-que-são-estaticamente-significativos-em-5-de-significância-discuta." class="section level2">
+<h2>c) Dos pares escolhidos, podemos dizer que são estaticamente significativos em 5% de significância? Discuta.</h2>
+<p>A hipótese do teste de correlação de pearson é de que não há correlação significativa entre dois dados. Assim, se o p-valor for maior que 0,05 (5% de significância), aceita-se que não há correlação significativa. Senão, rejeita-se a hipótese e considera-se que há sim correlação.</p>
+<p>A função <code>cor</code> não calcula o p-valor, tem que usar a <code>cor.test</code> ou outra que faça isso:</p>
+<pre class="r"><code># pra calcular as correlacoes:
+cor_mpg_disp &lt;- cor.test(mtcars$mpg, mtcars$disp)
+cor_carb_drat &lt;- cor.test(mtcars$carb, mtcars$drat)
+
+# ver o p-valor:
+cor_mpg_disp$p.value; cor_carb_drat$p.value</code></pre>
+<pre><code>## [1] 9.380327e-10</code></pre>
+<pre><code>## [1] 0.6211834</code></pre>
+<p>É possível ver que entre as variáveis mpg e disp, existe correlação significativa a 5% de significância (p <span class="math inline">\(&lt;\)</span> 0,05), mas entre carb e drat, não (p <span class="math inline">\(&gt;\)</span> 0,05).</p>
+</div>
+</div>
+
+
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open');
+  });
+});
+</script>
+
+<!-- code folding -->
+
+<script>
+$(document).ready(function ()  {
+
+    // temporarily add toc-ignore selector to headers for the consistency with Pandoc
+    $('.unlisted.unnumbered').addClass('toc-ignore')
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_');
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

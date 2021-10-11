@@ -1,0 +1,208 @@
+---
+title: Exercícios - Vetores e Matrizes
+output: html_document
+---
+
+# Exercício 1
+## Crie o vetor x = 3, 3.1, 3.2,…,6. Note que o vetor deve ir até o número 6 num incremento de 0.1
+
+A documentação diz:
+```{r, eval=FALSE}
+seq(from = 1, to = 1, by = ((to - from) / (length.out - 1)),
+         length.out = NULL, along.with = NULL, ...)
+```
+
+Então tem que ser uma sequência de (from) 3 até (to) 6, de (by) 0.1 em 0.1.
+```{r}
+x <- seq(from = 3, to = 6, by = 0.1)
+x
+```
+
+# Exercício 2
+## Calcule e^x^cos(x) para o vetor anterior, atribua ao objeto solução. Descreva os atributos desse novo objeto criado;
+
+Sim, é só fazer exp(x) * cos(x).
+```{r}
+exp(x) * cos(x)
+```
+
+# Exercício 4
+## Crie um vetor numérico de tamanho 12 e o transforme em uma matriz.
+
+Sim, é só colocar `nrow`, ou `ncol` se quiser escolher o número de colunas.
+Mas ele vai organizar por coluna (1 a 4 vai ser coluna 1, 5 a 8 coluna 2, etc.).
+Da pra organizar por linha também com `byrow = TRUE`.
+
+```{r}
+# por linha
+vetor <- c(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12)
+matrix(data = vetor, nrow = 4)
+
+#por coluna:
+vetor <- c(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12)
+matrix(data = vetor, nrow = 4, byrow = TRUE)
+```
+
+# Exercício 5
+## Informe as três maiores áreas do dataset islands (esse objeto estará dentro do seu ambiente R).
+
+Islands é um conjundo de dados que vem com o pacote `datasets`.
+```{r}
+library(datasets)
+
+# Da pra usar `sort` pra colocar  os dados do maior
+# para o menor valor (decreasing = TRUE). Sem o
+# decreasing = TRUE ele organiza do menor para o maior.
+dados_decrescentes <- sort(islands, decreasing = TRUE)
+dados_decrescentes
+
+# ai da pra usar pra pegar os tres primeiros valores
+dados_decrescentes[1:3]
+```
+
+# Exercício 6
+## Indique um código que trará a posição do ranking da América do Sul no objeto islands;
+
+Da pra usar `rank` para saber o ranking dos dados. Mas a função
+dá o menor rank para o menor valor. Então Vancouver, que tem a menor
+área (olha o ex. 5), vai ter o menor rank (1):
+
+```{r}
+rank(islands)
+```
+
+Mas se a gente quiser dar o rank número um para o território de
+maior área, da para inverter os dados usando o sinal de (-). Assim
+o menor valor vai ser o que era o maior (agora será o mais
+negativo).
+
+```{r}
+islands_ranking <- rank(-islands)
+```
+
+Depois é só pegar o dado com o título "South America"
+
+```{r}
+islands_ranking["South America"]
+```
+
+# Exercício 7
+## Crie matrizes 4x4 que contenham os seguintes valores em todas as suas posições [i, j]: 5, T, NaN e -89. Cheque os atributos. {.tabset}
+
+A gente pode criar uns vetores com aqueles valores e depois transformar em matrizes. São 4x4, então vão
+repetir os dados 16 vezes. A função `rep` repete um valor n vezes: `rep(valor, n de vezes)`. Mas da pra
+digitar na mão também.
+
+```{r}
+# repetindo cada valor 16 vezes
+vec1 <- rep(5, 16)
+vec2 <- rep(T, 16)
+vec3 <- rep(NaN, 16)
+vec4 <- rep(-89, 16)
+```
+
+Os vetores são:
+
+### Vetor 1
+```{r}
+vec1
+```
+### Vetor 2
+```{r}
+vec2
+```
+
+### Vetor 3
+```{r}
+vec3
+```
+
+### Vetor 4
+```{r}
+vec4
+```
+
+## {.tabset}
+
+Depois é só transformar em matrizes.
+
+```{r}
+mat1 <- matrix(vec1, ncol = 4)
+mat2 <- matrix(vec2, ncol = 4)
+mat3 <- matrix(vec3, ncol = 4)
+mat4 <- matrix(vec4, ncol = 4)
+```
+
+Os resultados sao:
+
+### Matriz 1
+```{r}
+mat1
+```
+### Matriz 2
+```{r}
+mat2
+```
+### Matriz 3
+```{r}
+mat3
+```
+### Matriz 4
+```{r}
+mat4
+```
+
+##
+
+Depois é só inspecionar cada matriz com `str` ou outra função que dê informações sobre
+o objeto.
+
+# Exercício 8
+## Crie uma matriz identidade usando a função rep. Transponha e multiplique ambas. Comente o resultado. {.tabset}
+
+Não depende da 7. Essa é meio complicada. Uma matriz identidade da pra fazer repetindo 1 e vários zeros
+várias vezes. Se for uma 4x4 é 1 e quarto zeros (1 0 0 0 0), 5x5 1 e 5 zeros (1 0 0 0 0 0), etc. Depois
+de repetir esses valores várias vezes, ela termina com 1 de novo.
+
+### Exemplo 3x3
+
+Pra ilustrar, uma matriz 3x3, por exemplo, seria 1 0 0 0 1 0 0 0 1, repete 1 e 3 zeros 2 vezes e termina com 1.
+```{r}
+vector <- c(1, 0, 0, 0, 1, 0, 0, 0, 1)
+matrix(vector, ncol = 3)
+```
+
+### Exemplo 4x4
+Uma 4x4, seria 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1, repetindo 1 e 4 zeros 3 vezes e terminando com 1.
+```{r}
+vector <- c(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1)
+matrix(vector, ncol = 4)
+```
+
+###
+
+Assim, da pra usar a função `rep` pra não ter que fazer na mão. É só repetir aquela sequência
+tantas vezes quanto necessário, e juntar um número um no final. Por exemplo, pra fazer aquela
+matriz 4x4, seria:
+
+```{r}
+# repete 1 sequencia 1 0 0 0 tres vezes e junta o numero 1 no final
+sequencia <- c(1, 0, 0, 0, 0)
+vector <- c(rep(sequencia, 3), 1)
+
+# cria a matriz
+matrix(vector, ncol = 4)
+```
+## {.tabset}
+
+Por curiosidade, ele pediu pra fazer com `rep` pra exercitar o raciocínio provavelmente. Mas existe
+a função `diag` que faz justamente a mesma coisa sem dar trabalho:
+
+### Matriz 3x3
+```{r}
+diag(3)
+```
+### Matriz 4x4
+```{r}
+diag(4)
+```
