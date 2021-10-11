@@ -1,402 +1,288 @@
 <!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="generator" content="pandoc" />
 
-<html>
+    
+    
+    <title>Exercício - Estatística Descritiva</title>
 
-<head>
-
-<meta charset="utf-8" />
-<meta name="generator" content="pandoc" />
-<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
-
-
-
-
-<title>Exercício - Estatística Descritiva</title>
-
-<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<link href="site_libs/bootstrap-3.3.5/css/cosmo.min.css" rel="stylesheet" />
-<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
-<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
-<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
-<style>h1 {font-size: 34px;}
-       h1.title {font-size: 38px;}
-       h2 {font-size: 30px;}
-       h3 {font-size: 24px;}
-       h4 {font-size: 18px;}
-       h5 {font-size: 16px;}
-       h6 {font-size: 12px;}
-       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
-       pre:not([class]) { background-color: white }</style>
-<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
-<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
-<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
-<script src="site_libs/navigation-1.1/tabsets.js"></script>
-<link href="site_libs/highlightjs-9.12.0/textmate.css" rel="stylesheet" />
-<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
-
-<style type="text/css">
-  code{white-space: pre-wrap;}
-  span.smallcaps{font-variant: small-caps;}
-  span.underline{text-decoration: underline;}
-  div.column{display: inline-block; vertical-align: top; width: 50%;}
-  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-  ul.task-list{list-style: none;}
+        <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href="site_libs/bootstrap-3.3.7/css/bootstrap.min.css" rel="stylesheet" />
+    <script src="site_libs/bootstrap-3.3.7/js/bootstrap.min.js"></script>
+    <script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+    <script src="site_libs/navigation-1.1/tabsets.js"></script>
+    <link href="site_libs/magnific-popup-1.1.0/magnific-popup.css" rel="stylesheet" />
+    <script src="site_libs/magnific-popup-1.1.0/jquery.magnific-popup.min.js"></script>
+    <link href="site_libs/readthedown-0.1/readthedown.css" rel="stylesheet" />
+    <link href="site_libs/readthedown-0.1/readthedown_fonts_embed.css" rel="stylesheet" />
+    <script src="site_libs/readthedown-0.1/readthedown.js"></script>
+    <link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+    <script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
+    
+    
+        <style type="text/css">code{white-space: pre;}</style>
+    <style type="text/css">
+      a.sourceLine { display: inline-block; line-height: 1.25; }
+      a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+      a.sourceLine:empty { height: 1.2em; }
+      .sourceCode { overflow: visible; }
+      code.sourceCode { white-space: pre; position: relative; }
+      div.sourceCode { margin: 1em 0; }
+      pre.sourceCode { margin: 0; }
+      @media screen {
+      div.sourceCode { overflow: auto; }
+      }
+      @media print {
+      code.sourceCode { white-space: pre-wrap; }
+      a.sourceLine { text-indent: -1em; padding-left: 1em; }
+      }
+      pre.numberSource a.sourceLine
+        { position: relative; left: -4em; }
+      pre.numberSource a.sourceLine::before
+        { content: attr(title);
+          position: relative; left: -1em; text-align: right; vertical-align: baseline;
+          border: none; pointer-events: all; display: inline-block;
+          -webkit-touch-callout: none; -webkit-user-select: none;
+          -khtml-user-select: none; -moz-user-select: none;
+          -ms-user-select: none; user-select: none;
+          padding: 0 4px; width: 4em;
+          color: #aaaaaa;
+        }
+      pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+      div.sourceCode
+        { background-color: #f8f8f8; }
+      @media screen {
+      a.sourceLine::before { text-decoration: underline; }
+      }
+      code span.al { color: #ef2929; } /* Alert */
+      code span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
+      code span.at { color: #c4a000; } /* Attribute */
+      code span.bn { color: #0000cf; } /* BaseN */
+      code span.cf { color: #204a87; font-weight: bold; } /* ControlFlow */
+      code span.ch { color: #4e9a06; } /* Char */
+      code span.cn { color: #000000; } /* Constant */
+      code span.co { color: #8f5902; font-style: italic; } /* Comment */
+      code span.cv { color: #8f5902; font-weight: bold; font-style: italic; } /* CommentVar */
+      code span.do { color: #8f5902; font-weight: bold; font-style: italic; } /* Documentation */
+      code span.dt { color: #204a87; } /* DataType */
+      code span.dv { color: #0000cf; } /* DecVal */
+      code span.er { color: #a40000; font-weight: bold; } /* Error */
+      code span.ex { } /* Extension */
+      code span.fl { color: #0000cf; } /* Float */
+      code span.fu { color: #000000; } /* Function */
+      code span.im { } /* Import */
+      code span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Information */
+      code span.kw { color: #204a87; font-weight: bold; } /* Keyword */
+      code span.op { color: #ce5c00; font-weight: bold; } /* Operator */
+      code span.ot { color: #8f5902; } /* Other */
+      code span.pp { color: #8f5902; font-style: italic; } /* Preprocessor */
+      code span.sc { color: #000000; } /* SpecialChar */
+      code span.ss { color: #4e9a06; } /* SpecialString */
+      code span.st { color: #4e9a06; } /* String */
+      code span.va { color: #000000; } /* Variable */
+      code span.vs { color: #4e9a06; } /* VerbatimString */
+      code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warning */
     </style>
+    
+    
+    <!-- tabsets -->
+    <script>
+      $(document).ready(function () {
+	  window.buildTabsets("toc");
+      });
+      $(document).ready(function () {
+	  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+	      $(this).parent().toggleClass('nav-tabs-open')
+	  });
+      });
+    </script>
 
-<style type="text/css">code{white-space: pre;}</style>
-<script type="text/javascript">
-if (window.hljs) {
-  hljs.configure({languages: []});
-  hljs.initHighlightingOnLoad();
-  if (document.readyState && document.readyState === "complete") {
-    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
-  }
-}
-</script>
+    <!-- code folding -->
+    
+    <!-- code download -->
+    
+    <!-- tabsets dropdown -->
 
+    <style type="text/css">
+      .tabset-dropdown > .nav-tabs {
+	  display: inline-table;
+	  max-height: 500px;
+	  min-height: 44px;
+	  overflow-y: auto;
+	  background: white;
+	  border: 1px solid #ddd;
+	  border-radius: 4px;
+      }
+      
+      .tabset-dropdown > .nav-tabs > li.active:before {
+	  content: "";
+	  font-family: 'Glyphicons Halflings';
+	  display: inline-block;
+	  padding: 10px;
+	  border-right: 1px solid #ddd;
+      }
+      
+      .tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+	  content: "&#xe258;";
+	  border: none;
+      }
+      
+      .tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+	  content: "";
+	  font-family: 'Glyphicons Halflings';
+	  display: inline-block;
+	  padding: 10px;
+	  border-right: 1px solid #ddd;
+      }
+      
+      .tabset-dropdown > .nav-tabs > li.active {
+	  display: block;
+      }
 
+      .tabset-dropdown > .nav-tabs > li.active a {
+  	  padding: 0 15px !important;
+      }
 
-
-
-
-
-
-<style type = "text/css">
-.main-container {
-  max-width: 940px;
-  margin-left: auto;
-  margin-right: auto;
-}
-img {
-  max-width:100%;
-}
-.tabbed-pane {
-  padding-top: 12px;
-}
-.html-widget {
-  margin-bottom: 20px;
-}
-button.code-folding-btn:focus {
-  outline: none;
-}
-summary {
-  display: list-item;
-}
-pre code {
-  padding: 0;
-}
-</style>
-
-
-<style type="text/css">
-.dropdown-submenu {
-  position: relative;
-}
-.dropdown-submenu>.dropdown-menu {
-  top: 0;
-  left: 100%;
-  margin-top: -6px;
-  margin-left: -1px;
-  border-radius: 0 6px 6px 6px;
-}
-.dropdown-submenu:hover>.dropdown-menu {
-  display: block;
-}
-.dropdown-submenu>a:after {
-  display: block;
-  content: " ";
-  float: right;
-  width: 0;
-  height: 0;
-  border-color: transparent;
-  border-style: solid;
-  border-width: 5px 0 5px 5px;
-  border-left-color: #cccccc;
-  margin-top: 5px;
-  margin-right: -10px;
-}
-.dropdown-submenu:hover>a:after {
-  border-left-color: #adb5bd;
-}
-.dropdown-submenu.pull-left {
-  float: none;
-}
-.dropdown-submenu.pull-left>.dropdown-menu {
-  left: -100%;
-  margin-left: 10px;
-  border-radius: 6px 0 6px 6px;
-}
-</style>
-
-<script type="text/javascript">
-// manage active state of menu based on current page
-$(document).ready(function () {
-  // active menu anchor
-  href = window.location.pathname
-  href = href.substr(href.lastIndexOf('/') + 1)
-  if (href === "")
-    href = "index.html";
-  var menuAnchor = $('a[href="' + href + '"]');
-
-  // mark it active
-  menuAnchor.tab('show');
-
-  // if it's got a parent navbar menu mark it active as well
-  menuAnchor.closest('li.dropdown').addClass('active');
-
-  // Navbar adjustments
-  var navHeight = $(".navbar").first().height() + 15;
-  var style = document.createElement('style');
-  var pt = "padding-top: " + navHeight + "px; ";
-  var mt = "margin-top: -" + navHeight + "px; ";
-  var css = "";
-  // offset scroll position for anchor links (for fixed navbar)
-  for (var i = 1; i <= 6; i++) {
-    css += ".section h" + i + "{ " + pt + mt + "}\n";
-  }
-  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
-  document.head.appendChild(style);
-});
-</script>
-
-<!-- tabsets -->
-
-<style type="text/css">
-.tabset-dropdown > .nav-tabs {
-  display: inline-table;
-  max-height: 500px;
-  min-height: 44px;
-  overflow-y: auto;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-}
-
-.tabset-dropdown > .nav-tabs > li.active:before {
-  content: "";
-  font-family: 'Glyphicons Halflings';
-  display: inline-block;
-  padding: 10px;
-  border-right: 1px solid #ddd;
-}
-
-.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
-  content: "&#xe258;";
-  border: none;
-}
-
-.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
-  content: "";
-  font-family: 'Glyphicons Halflings';
-  display: inline-block;
-  padding: 10px;
-  border-right: 1px solid #ddd;
-}
-
-.tabset-dropdown > .nav-tabs > li.active {
-  display: block;
-}
-
-.tabset-dropdown > .nav-tabs > li > a,
-.tabset-dropdown > .nav-tabs > li > a:focus,
-.tabset-dropdown > .nav-tabs > li > a:hover {
-  border: none;
-  display: inline-block;
-  border-radius: 4px;
-  background-color: transparent;
-}
-
-.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
-  display: block;
-  float: none;
-}
-
-.tabset-dropdown > .nav-tabs > li {
-  display: none;
-}
-</style>
-
-<!-- code folding -->
-
-
-
-<style type="text/css">
-
-#TOC {
-  margin: 25px 0px 20px 0px;
-}
-@media (max-width: 768px) {
-#TOC {
-  position: relative;
-  width: 100%;
-}
-}
-
-@media print {
-.toc-content {
-  /* see https://github.com/w3c/csswg-drafts/issues/4434 */
-  float: right;
-}
-}
-
-.toc-content {
-  padding-left: 30px;
-  padding-right: 40px;
-}
-
-div.main-container {
-  max-width: 1200px;
-}
-
-div.tocify {
-  width: 20%;
-  max-width: 260px;
-  max-height: 85%;
-}
-
-@media (min-width: 768px) and (max-width: 991px) {
-  div.tocify {
-    width: 25%;
-  }
-}
-
-@media (max-width: 767px) {
-  div.tocify {
-    width: 100%;
-    max-width: none;
-  }
-}
-
-.tocify ul, .tocify li {
-  line-height: 20px;
-}
-
-.tocify-subheader .tocify-item {
-  font-size: 0.90em;
-}
-
-.tocify .list-group-item {
-  border-radius: 0px;
-}
-
-
-</style>
-
-
-
+      .tabset-dropdown > .nav-tabs > li > a,
+      .tabset-dropdown > .nav-tabs > li > a:focus,
+      .tabset-dropdown > .nav-tabs > li > a:hover {
+	  border: none;
+	  display: inline-block;
+	  border-radius: 4px;
+	  background-color: transparent;
+      }
+      
+      .tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+	  display: block;
+	  float: none;
+      }
+      
+      .tabset-dropdown > .nav-tabs > li {
+	  display: none;
+	  margin-left: 0 !important;
+      }
+    </style>
+    
 </head>
 
-<body>
+<body class="preload">
 
-
-<div class="container-fluid main-container">
-
-
-<!-- setup 3col/9col grid for toc_float and main content  -->
-<div class="row">
-<div class="col-xs-12 col-sm-4 col-md-3">
-<div id="TOC" class="tocify">
-</div>
-</div>
-
-<div class="toc-content col-xs-12 col-sm-8 col-md-9">
-
-
-
-
-<div class="navbar navbar-inverse  navbar-fixed-top" role="navigation">
-  <div class="container">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand" href="index.html">Exercícios</a>
-    </div>
-    <div id="navbar" class="navbar-collapse collapse">
-      <ul class="nav navbar-nav">
-        <li>
-  <a href="vetores_matrizes.html">Vetores e Matrizes</a>
-</li>
-<li>
-  <a href="estat_descritiva.html">Estatística Descritiva</a>
-</li>
-      </ul>
-      <ul class="nav navbar-nav navbar-right">
+            <!-- readthedown start -->   
+   <div id="content" data-toggle="wy-nav-shift">
+     <nav id="nav-top" role="navigation" aria-label="top navigation">
+       <a role="button" href="#" data-toggle="wy-nav-top"><span class="glyphicon glyphicon-menu-hamburger"></span></a>
+     </nav>
+         
+   
+      
+   <div class="navbar navbar-inverse  navbar-fixed-top" role="navigation">
+     <div class="container">
+       <div class="navbar-header">
+         <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+           <span class="icon-bar"></span>
+           <span class="icon-bar"></span>
+           <span class="icon-bar"></span>
+         </button>
+         <a class="navbar-brand" href="index.html">Exercícios</a>
+       </div>
+       <div id="navbar" class="navbar-collapse collapse">
+         <ul class="nav navbar-nav">
+           <li>
+     <a href="vetores_matrizes.html">Vetores e Matrizes</a>
+   </li>
+   <li>
+     <a href="estat_descritiva.html">Estatística Descritiva</a>
+   </li>
+         </ul>
+         <ul class="nav navbar-nav navbar-right">
+           
+         </ul>
+       </div><!--/.nav-collapse -->
+     </div><!--/.container -->
+   </div><!--/.navbar -->
         
+      <h1 class="title">Exercício - Estatística Descritiva</h1>
+      
+         <!-- readthedown authors -->
+   <div id="sidebar">
+    <h2><a href="#content">Exercício - Estatística Descritiva</a></h2>
+    <div id="toc">
+      <ul>
+      <li><a href="#exercício-1">Exercício 1</a></li>
+      <li><a href="#exercício-2">Exercício 2</a></li>
       </ul>
-    </div><!--/.nav-collapse -->
-  </div><!--/.container -->
-</div><!--/.navbar -->
-
-<div id="header">
-
-
-
-<h1 class="title toc-ignore">Exercício - Estatística Descritiva</h1>
-
-</div>
-
-
+    </div>
+    <div id="postamble" data-toggle="wy-nav-shift" class="status">
+                </div>
+   </div>
+   
+   
+      
+   
+<!-- Don't indent these lines or it will mess pre blocks indentation --> 
+<div id="main">
 <div id="exercício-1" class="section level1">
 <h1>Exercício 1</h1>
-<div id="considere-15-peças-com-tamanhos-diferentes-sejam-eles-40-4541484942474641404045464748-cm-calcule" class="section level2">
-<h2>Considere 15 peças com tamanhos diferentes, sejam eles 40, 45,41,48,49,42,47,46,41,40,40,45,46,47,48 cm, calcule:</h2>
+<div id="considere-15-peças-com-tamanhos-diferentes-sejam-eles-40-4541484942474641404045464748-cm-calcule" class="section level3">
+<h3>Considere 15 peças com tamanhos diferentes, sejam eles 40, 45,41,48,49,42,47,46,41,40,40,45,46,47,48 cm, calcule:</h3>
 <p>Os dados são:</p>
-<pre class="r"><code>dados &lt;- c(40, 45, 41, 48, 49, 42, 47, 46, 41, 40, 40, 45, 46, 47, 48)</code></pre>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" title="1">dados &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">40</span>, <span class="dv">45</span>, <span class="dv">41</span>, <span class="dv">48</span>, <span class="dv">49</span>, <span class="dv">42</span>, <span class="dv">47</span>, <span class="dv">46</span>, <span class="dv">41</span>, <span class="dv">40</span>, <span class="dv">40</span>, <span class="dv">45</span>, <span class="dv">46</span>, <span class="dv">47</span>, <span class="dv">48</span>)</a></code></pre></div>
 </div>
-<div id="a-calcule-a-média-variância" class="section level2">
-<h2>a) Calcule a média, variância</h2>
-<pre class="r"><code>mean(dados); var(dados)</code></pre>
+<div id="a-calcule-a-média-variância" class="section level3">
+<h3>a) Calcule a média, variância</h3>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" title="1"><span class="kw">mean</span>(dados); <span class="kw">var</span>(dados)</a></code></pre></div>
 <pre><code>## [1] 44.33333</code></pre>
 <pre><code>## [1] 10.95238</code></pre>
 </div>
-<div id="b-utilize-a-função-pnorm-para-calcular-a-função-de-densidade-acumulada-px-para-toda-a-série-o-que-significa-o-primeiro-valor-dessa-série" class="section level2">
-<h2>b) Utilize a função pnorm() para calcular a função de densidade acumulada (P(x)) para toda a série, o que significa o primeiro valor dessa série?</h2>
+<div id="b-utilize-a-função-pnorm-para-calcular-a-função-de-densidade-acumulada-px-para-toda-a-série-o-que-significa-o-primeiro-valor-dessa-série" class="section level3">
+<h3>b) Utilize a função pnorm() para calcular a função de densidade acumulada (P(x)) para toda a série, o que significa o primeiro valor dessa série?</h3>
 <p>A função <code>pnorm</code> retorna a probabilidade acumulada de um população. Pra usar tem que informar qual a média e qual o desvio padrão da população:</p>
-<pre class="r"><code>media &lt;- mean(dados)
-desvio &lt;- sd(dados)
-pnorm(dados, mean = media, sd = desvio)</code></pre>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" title="1">media &lt;-<span class="st"> </span><span class="kw">mean</span>(dados)</a>
+<a class="sourceLine" id="cb5-2" title="2">desvio &lt;-<span class="st"> </span><span class="kw">sd</span>(dados)</a>
+<a class="sourceLine" id="cb5-3" title="3"><span class="kw">pnorm</span>(dados, <span class="dt">mean =</span> media, <span class="dt">sd =</span> desvio)</a></code></pre></div>
 <pre><code>##  [1] 0.09520175 0.57982432 0.15691446 0.86605664 0.92074617 0.24038825
 ##  [7] 0.78981406 0.69273232 0.15691446 0.09520175 0.09520175 0.57982432
 ## [13] 0.69273232 0.78981406 0.86605664</code></pre>
 <p>O primeiro valor dos resultados é a probabilidade de um valor ser menor que 40 (o primeiro valor dos <code>dados</code>)</p>
 </div>
-<div id="c-normalize-os-dados-com-média-zero-e-desvio-padrão-unitário-utilize-apenas-as-funções-mean-e-sd-para-tal" class="section level2">
-<h2>c) Normalize os dados com média zero e desvio padrão unitário, utilize apenas as funções mean() e sd() para tal</h2>
+<div id="c-normalize-os-dados-com-média-zero-e-desvio-padrão-unitário-utilize-apenas-as-funções-mean-e-sd-para-tal" class="section level3">
+<h3>c) Normalize os dados com média zero e desvio padrão unitário, utilize apenas as funções mean() e sd() para tal</h3>
 <p>Os dados podem ser normalizados com a diferença de cada valor até a média dividido pelo desvio padrão, com a expressão: <span class="math display">\[\frac{x-\overline{X}}{S}\]</span></p>
 <p>Onde <span class="math inline">\(x\)</span> é cada valor, <span class="math inline">\(\overline{X}\)</span> é a média e <span class="math inline">\(S\)</span> o desivio padrão. Então da pra fazer:</p>
-<pre class="r"><code>dados_normalizados &lt;- (dados - media) / desvio
-dados_normalizados</code></pre>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" title="1">dados_normalizados &lt;-<span class="st"> </span>(dados <span class="op">-</span><span class="st"> </span>media) <span class="op">/</span><span class="st"> </span>desvio</a>
+<a class="sourceLine" id="cb7-2" title="2">dados_normalizados</a></code></pre></div>
 <pre><code>##  [1] -1.3093864  0.2014441 -1.0072203  1.1079423  1.4101084 -0.7050542
 ##  [7]  0.8057762  0.5036102 -1.0072203 -1.3093864 -1.3093864  0.2014441
 ## [13]  0.5036102  0.8057762  1.1079423</code></pre>
 <p>Essa expressão dá os valores do eixo x para uma distribuição de média zero e desvio padrão igual a 1. Dá pra visualizar assim:</p>
-<pre class="r"><code>plot(density(dados_normalizados))</code></pre>
-<p><img src="estat_descritiva_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" title="1"><span class="kw">plot</span>(<span class="kw">density</span>(dados_normalizados))</a></code></pre></div>
+<p><img src="estat_descritiva_files/figure-html/unnamed-chunk-5-1.png" width="768" /></p>
 </div>
-<div id="calcule-os-intervalos-de-confiança-da-média" class="section level2">
-<h2>Calcule os intervalos de confiança da média</h2>
+<div id="d-calcule-os-intervalos-de-confiança-da-média" class="section level3">
+<h3>d) Calcule os intervalos de confiança da média</h3>
 <p>Cada valor do resultado do item anterior é o valor z (o eixo x) dos dados normalizados. O intervalo de confiança é calculado por: <span class="math display">\[IC = z \times \frac{S}{\sqrt{n}}\]</span></p>
 <p>Considerando um intervalo de confiança de 95%, como ele explicou na aula, o z de 95% em uma distribuição normal é <span class="math inline">\(\pm 1,96\)</span>. Então é só fazer:</p>
-<pre class="r"><code># numero de amostras, o &quot;tamanho&quot; (length) dos dados
-n &lt;- length(dados)
-ic &lt;- 1.96 * desvio / sqrt(n)
-
-media; media + ic; media - ic</code></pre>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" title="1"><span class="co"># numero de amostras, o &quot;tamanho&quot; (length) dos dados</span></a>
+<a class="sourceLine" id="cb10-2" title="2">n &lt;-<span class="st"> </span><span class="kw">length</span>(dados)</a>
+<a class="sourceLine" id="cb10-3" title="3">ic &lt;-<span class="st"> </span><span class="fl">1.96</span> <span class="op">*</span><span class="st"> </span>desvio <span class="op">/</span><span class="st"> </span><span class="kw">sqrt</span>(n)</a>
+<a class="sourceLine" id="cb10-4" title="4"></a>
+<a class="sourceLine" id="cb10-5" title="5">media; media <span class="op">+</span><span class="st"> </span>ic; media <span class="op">-</span><span class="st"> </span>ic</a></code></pre></div>
 <pre><code>## [1] 44.33333</code></pre>
 <pre><code>## [1] 46.00814</code></pre>
 <pre><code>## [1] 42.65853</code></pre>
 <p>As amostras que tenham entre esses valores de média tem 95% de probabilidade de pertencerem à essa população. Dá pra visualizar:</p>
-<pre class="r"><code>plot(density(dados_normalizados))  + abline(v = ic) + abline(v = -ic)</code></pre>
-<p><img src="estat_descritiva_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb14-1" title="1"><span class="kw">plot</span>(<span class="kw">density</span>(dados_normalizados))  <span class="op">+</span><span class="st"> </span><span class="kw">abline</span>(<span class="dt">v =</span> ic) <span class="op">+</span><span class="st"> </span><span class="kw">abline</span>(<span class="dt">v =</span> <span class="op">-</span>ic)</a></code></pre></div>
+<p><img src="estat_descritiva_files/figure-html/unnamed-chunk-7-1.png" width="768" /></p>
 <pre><code>## integer(0)</code></pre>
 </div>
-<div id="teste-se-essa-distribuição-é-normal.-discuta." class="section level2">
-<h2>Teste se essa distribuição é normal. Discuta.</h2>
+<div id="e-teste-se-essa-distribuição-é-normal.-discuta." class="section level3">
+<h3>e) Teste se essa distribuição é normal. Discuta.</h3>
 <p>Pra testar a normalidade é possível usar o teste de Shapiro-Wilk. A hipótese do teste é de que a distribuição é normal. Se o p-valor for maior que 0,05 aceita-se a hipótese nula, a distruição é normal. Se for menor, rejeita-se a hipótese, a distribuição não é normal.</p>
-<pre class="r"><code>shapiro.test(dados_normalizados)</code></pre>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb16-1" title="1"><span class="kw">shapiro.test</span>(dados_normalizados)</a></code></pre></div>
 <pre><code>## 
 ##  Shapiro-Wilk normality test
 ## 
@@ -407,11 +293,11 @@ media; media + ic; media - ic</code></pre>
 </div>
 <div id="exercício-2" class="section level1">
 <h1>Exercício 2</h1>
-<div id="utilizando-o-dataset-mtcars" class="section level2">
-<h2>Utilizando o dataset mtcars:</h2>
+<div id="utilizando-o-dataset-mtcars" class="section level3">
+<h3>Utilizando o dataset mtcars:</h3>
 <p>mtcars é um dataset que vem junto com o R. Dá para usar para fazer testes/treinar. Para ver o dataset é só usar <code>mtcars</code>:</p>
-<pre class="r"><code># `head` para ver apenas o cabecalho dos dados
-head(mtcars)</code></pre>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb18-1" title="1"><span class="co"># `head` para ver apenas o cabecalho dos dados</span></a>
+<a class="sourceLine" id="cb18-2" title="2"><span class="kw">head</span>(mtcars)</a></code></pre></div>
 <pre><code>##                    mpg cyl disp  hp drat    wt  qsec vs am gear carb
 ## Mazda RX4         21.0   6  160 110 3.90 2.620 16.46  0  1    4    4
 ## Mazda RX4 Wag     21.0   6  160 110 3.90 2.875 17.02  0  1    4    4
@@ -420,10 +306,10 @@ head(mtcars)</code></pre>
 ## Hornet Sportabout 18.7   8  360 175 3.15 3.440 17.02  0  0    3    2
 ## Valiant           18.1   6  225 105 2.76 3.460 20.22  1  0    3    1</code></pre>
 </div>
-<div id="a-qual-a-estrutura-desse-objeto-quais-são-os-tipos-de-vetores-contidos-nesse-objeto" class="section level2">
-<h2>a) Qual a estrutura desse objeto? Quais são os tipos de vetores contidos nesse objeto?</h2>
+<div id="a-qual-a-estrutura-desse-objeto-quais-são-os-tipos-de-vetores-contidos-nesse-objeto" class="section level3">
+<h3>a) Qual a estrutura desse objeto? Quais são os tipos de vetores contidos nesse objeto?</h3>
 <p>Para ver a estrutura, usar <code>str</code>:</p>
-<pre class="r"><code>str(mtcars)</code></pre>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb20-1" title="1"><span class="kw">str</span>(mtcars)</a></code></pre></div>
 <pre><code>## &#39;data.frame&#39;:    32 obs. of  11 variables:
 ##  $ mpg : num  21 21 22.8 21.4 18.7 18.1 14.3 24.4 22.8 19.2 ...
 ##  $ cyl : num  6 6 4 6 8 6 8 4 4 6 ...
@@ -437,10 +323,10 @@ head(mtcars)</code></pre>
 ##  $ gear: num  4 4 4 3 3 3 3 4 4 4 ...
 ##  $ carb: num  4 4 1 1 2 1 4 2 2 4 ...</code></pre>
 </div>
-<div id="b-calcule-uma-matriz-de-correlação-correlograma-para-toda-a-série-discuta-2-pares-a-sua-escolha" class="section level2">
-<h2>b) Calcule uma matriz de correlação (correlograma) para toda a série, discuta 2 pares a sua escolha</h2>
+<div id="b-calcule-uma-matriz-de-correlação-correlograma-para-toda-a-série-discuta-2-pares-a-sua-escolha" class="section level3">
+<h3>b) Calcule uma matriz de correlação (correlograma) para toda a série, discuta 2 pares a sua escolha</h3>
 <p>Para calcular a matriz de correlação, usar <code>cor</code>:</p>
-<pre class="r"><code>cor(mtcars)</code></pre>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb22-1" title="1"><span class="kw">cor</span>(mtcars)</a></code></pre></div>
 <table>
 <thead>
 <tr class="header">
@@ -616,97 +502,47 @@ head(mtcars)</code></pre>
 </tbody>
 </table>
 </div>
-<div id="c-dos-pares-escolhidos-podemos-dizer-que-são-estaticamente-significativos-em-5-de-significância-discuta." class="section level2">
-<h2>c) Dos pares escolhidos, podemos dizer que são estaticamente significativos em 5% de significância? Discuta.</h2>
+<div id="c-dos-pares-escolhidos-podemos-dizer-que-são-estaticamente-significativos-em-5-de-significância-discuta." class="section level3">
+<h3>c) Dos pares escolhidos, podemos dizer que são estaticamente significativos em 5% de significância? Discuta.</h3>
 <p>A hipótese do teste de correlação de pearson é de que não há correlação significativa entre dois dados. Assim, se o p-valor for maior que 0,05 (5% de significância), aceita-se que não há correlação significativa. Senão, rejeita-se a hipótese e considera-se que há sim correlação.</p>
 <p>A função <code>cor</code> não calcula o p-valor, tem que usar a <code>cor.test</code> ou outra que faça isso:</p>
-<pre class="r"><code># pra calcular as correlacoes:
-cor_mpg_disp &lt;- cor.test(mtcars$mpg, mtcars$disp)
-cor_carb_drat &lt;- cor.test(mtcars$carb, mtcars$drat)
-
-# ver o p-valor:
-cor_mpg_disp$p.value; cor_carb_drat$p.value</code></pre>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb23-1" title="1"><span class="co"># pra calcular as correlacoes:</span></a>
+<a class="sourceLine" id="cb23-2" title="2">cor_mpg_disp &lt;-<span class="st"> </span><span class="kw">cor.test</span>(mtcars<span class="op">$</span>mpg, mtcars<span class="op">$</span>disp)</a>
+<a class="sourceLine" id="cb23-3" title="3">cor_carb_drat &lt;-<span class="st"> </span><span class="kw">cor.test</span>(mtcars<span class="op">$</span>carb, mtcars<span class="op">$</span>drat)</a>
+<a class="sourceLine" id="cb23-4" title="4"></a>
+<a class="sourceLine" id="cb23-5" title="5"><span class="co"># ver o p-valor:</span></a>
+<a class="sourceLine" id="cb23-6" title="6">cor_mpg_disp<span class="op">$</span>p.value; cor_carb_drat<span class="op">$</span>p.value</a></code></pre></div>
 <pre><code>## [1] 9.380327e-10</code></pre>
 <pre><code>## [1] 0.6211834</code></pre>
 <p>É possível ver que entre as variáveis mpg e disp, existe correlação significativa a 5% de significância (p <span class="math inline">\(&lt;\)</span> 0,05), mas entre carb e drat, não (p <span class="math inline">\(&gt;\)</span> 0,05).</p>
 </div>
 </div>
-
-
-
-</div>
 </div>
 
-</div>
+   
+   
+            
+      
 
-<script>
+  <script>
+    $(document).ready(function () {
 
-// add bootstrap table styles to pandoc tables
-function bootstrapStylePandocTables() {
-  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
-}
-$(document).ready(function () {
-  bootstrapStylePandocTables();
-});
+			
+ 		
+	    });
+  </script>
 
 
-</script>
 
-<!-- tabsets -->
-
-<script>
-$(document).ready(function () {
-  window.buildTabsets("TOC");
-});
-
-$(document).ready(function () {
-  $('.tabset-dropdown > .nav-tabs > li').click(function () {
-    $(this).parent().toggleClass('nav-tabs-open');
-  });
-});
-</script>
-
-<!-- code folding -->
-
-<script>
-$(document).ready(function ()  {
-
-    // temporarily add toc-ignore selector to headers for the consistency with Pandoc
-    $('.unlisted.unnumbered').addClass('toc-ignore')
-
-    // move toc-ignore selectors from section div to header
-    $('div.section.toc-ignore')
-        .removeClass('toc-ignore')
-        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
-
-    // establish options
-    var options = {
-      selectors: "h1",
-      theme: "bootstrap3",
-      context: '.toc-content',
-      hashGenerator: function (text) {
-        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_');
-      },
-      ignoreSelector: ".toc-ignore",
-      scrollTo: 0
-    };
-    options.showAndHide = true;
-    options.smoothScroll = true;
-
-    // tocify
-    var toc = $("#TOC").tocify(options).data("toc-tocify");
-});
-</script>
-
-<!-- dynamically load mathjax for compatibility with self-contained -->
-<script>
-  (function () {
-    var script = document.createElement("script");
-    script.type = "text/javascript";
-    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
-    document.getElementsByTagName("head")[0].appendChild(script);
-  })();
-</script>
-
+    <!-- dynamically load mathjax for compatibility with self-contained -->
+  <script>
+    (function () {
+	var script = document.createElement("script");
+	script.type = "text/javascript";
+	script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+	document.getElementsByTagName("head")[0].appendChild(script);
+    })();
+  </script>
+  
 </body>
 </html>

@@ -9,10 +9,8 @@ navbar:
     - text: "Estatística Descritiva"
       href: estat_descritiva.html
 output:
-  html_document:
-    theme: cosmo
-    highlight: textmate
-    toc: true
+  rmdformats::readthedown:
+    highlight: tango
     toc_depth: 1
     toc_float:
       collapse: false

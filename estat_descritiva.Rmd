@@ -1,10 +1,10 @@
 ---
 title: Exercício - Estatística Descritiva
-output: html_document
+output: rmdformats::readthedown
 ---
 
 # Exercício 1
-## Considere 15 peças com tamanhos diferentes, sejam eles 40, 45,41,48,49,42,47,46,41,40,40,45,46,47,48 cm, calcule:
+### Considere 15 peças com tamanhos diferentes, sejam eles 40, 45,41,48,49,42,47,46,41,40,40,45,46,47,48 cm, calcule:
 
 Os dados são:
 
@@ -12,13 +12,13 @@ Os dados são:
 dados <- c(40, 45, 41, 48, 49, 42, 47, 46, 41, 40, 40, 45, 46, 47, 48)
 ```
 
-## a) Calcule a média, variância
+### a) Calcule a média, variância
 
 ```{r}
 mean(dados); var(dados)
 ```
 
-## b) Utilize a função pnorm() para calcular a função de densidade acumulada (P(x)) para toda a série, o que significa o primeiro valor dessa série?
+### b) Utilize a função pnorm() para calcular a função de densidade acumulada (P(x)) para toda a série, o que significa o primeiro valor dessa série?
 
 A função `pnorm` retorna a probabilidade acumulada de um população. Pra usar
 tem que informar qual a média e qual o desvio padrão da população:
@@ -32,7 +32,7 @@ pnorm(dados, mean = media, sd = desvio)
 O primeiro valor dos resultados é a probabilidade de um valor ser menor que
 40 (o primeiro valor dos `dados`)
 
-## c) Normalize os dados com média zero e desvio padrão unitário, utilize apenas as funções mean() e sd() para tal
+### c) Normalize os dados com média zero e desvio padrão unitário, utilize apenas as funções mean() e sd() para tal
 
 Os dados podem ser normalizados com a diferença de cada valor até a média dividido pelo
 desvio padrão, com a expressão: $$\frac{x-\overline{X}}{S}$$
@@ -51,7 +51,7 @@ padrão igual a 1. Dá pra visualizar assim:
 plot(density(dados_normalizados))
 ```
 
-## Calcule os intervalos de confiança da média
+### d) Calcule os intervalos de confiança da média
 
 Cada valor do resultado do item anterior é o valor z (o eixo x) dos dados normalizados.
 O intervalo de confiança é calculado por: $$IC = z \times \frac{S}{\sqrt{n}}$$
@@ -74,7 +74,7 @@ probabilidade de pertencerem à essa população. Dá pra visualizar:
 plot(density(dados_normalizados))  + abline(v = ic) + abline(v = -ic)
 ```
 
-## Teste se essa distribuição é normal. Discuta.
+### e) Teste se essa distribuição é normal. Discuta.
 
 Pra testar a normalidade é possível usar o teste de Shapiro-Wilk. A hipótese
 do teste é de que a distribuição é normal. Se o p-valor for maior que 0,05
@@ -89,7 +89,7 @@ O p-valor é menor que 0,05, então a distribuição não é normal (dá pra ver
 nos gráficos acima que não é, mesmo sem o teste)
 
 # Exercício 2
-## Utilizando o dataset mtcars:
+### Utilizando o dataset mtcars:
 
 mtcars é um dataset que vem junto com o R. Dá para usar para fazer
 testes/treinar. Para ver o dataset é só usar `mtcars`:
@@ -99,7 +99,7 @@ testes/treinar. Para ver o dataset é só usar `mtcars`:
 head(mtcars)
 ```
 
-## a) Qual a estrutura desse objeto? Quais são os tipos de vetores contidos nesse objeto?
+### a) Qual a estrutura desse objeto? Quais são os tipos de vetores contidos nesse objeto?
 
 Para ver a estrutura, usar `str`:
 
@@ -107,7 +107,7 @@ Para ver a estrutura, usar `str`:
 str(mtcars)
 ```
 
-## b) Calcule uma matriz de correlação (correlograma) para toda a série, discuta 2 pares a sua escolha
+### b) Calcule uma matriz de correlação (correlograma) para toda a série, discuta 2 pares a sua escolha
 
 Para calcular a matriz de correlação, usar `cor`:
 
@@ -117,7 +117,7 @@ cor(mtcars)
 ```{r, echo = FALSE}
 knitr::kable(round(cor(mtcars), 2))
 ```
-## c) Dos pares escolhidos, podemos dizer que são estaticamente significativos em 5% de significância? Discuta.
+### c) Dos pares escolhidos, podemos dizer que são estaticamente significativos em 5% de significância? Discuta.
 
 A hipótese do teste de correlação de pearson é de que não há correlação significativa
 entre dois dados. Assim, se o p-valor for maior que 0,05 (5% de significância),

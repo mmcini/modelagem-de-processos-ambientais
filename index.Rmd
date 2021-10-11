@@ -1,6 +1,6 @@
 ---
 title: "Exercícios de Modelagem"
-output: html_document
+output: rmdformats::readthedown
 ---
 
 Alguns exercícios comentados nas abas acima.
