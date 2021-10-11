@@ -1,5 +1,5 @@
 ---
-title: Exercício - Estatística Descritiva
+title: Exercícios - Estatística Descritiva
 output: rmdformats::readthedown
 ---
 
