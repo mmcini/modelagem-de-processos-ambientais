@@ -20,8 +20,8 @@ mean(dados); var(dados)
 
 ### b) Utilize a função pnorm() para calcular a função de densidade acumulada (P(x)) para toda a série, o que significa o primeiro valor dessa série?
 
-A função `pnorm` retorna a probabilidade acumulada de um população. Pra usar
-tem que informar qual a média e qual o desvio padrão da população:
+A função `pnorm` retorna a probabilidade acumulada de um população. Para usar,
+é necessário informar qual a média e qual o desvio padrão da população:
 
 ```{r}
 media <- mean(dados)
@@ -37,15 +37,15 @@ O primeiro valor dos resultados é a probabilidade de um valor ser menor que
 Os dados podem ser normalizados com a diferença de cada valor até a média dividido pelo
 desvio padrão, com a expressão: $$\frac{x-\overline{X}}{S}$$
 
-Onde $x$ é cada valor, $\overline{X}$ é a média e $S$ o desivio padrão. Então da pra fazer:
+Onde $x$ é cada valor, $\overline{X}$ é a média e $S$ o desivio padrão. Então podemos fazer:
 
 ```{r}
 dados_normalizados <- (dados - media) / desvio
 dados_normalizados
 ```
 
-Essa expressão dá os valores do eixo x para uma distribuição de média zero e desvio
-padrão igual a 1. Dá pra visualizar assim:
+Essa expressão fornece os valores do eixo x para uma distribuição de média zero e desvio
+padrão igual a 1. É possível visualizar assim:
 
 ```{r}
 plot(density(dados_normalizados))
@@ -56,8 +56,8 @@ plot(density(dados_normalizados))
 Cada valor do resultado do item anterior é o valor z (o eixo x) dos dados normalizados.
 O intervalo de confiança é calculado por: $$IC = z \times \frac{S}{\sqrt{n}}$$
 
-Considerando um intervalo de confiança de 95%, como ele explicou na aula,
-o z de 95% em uma distribuição normal é $\pm 1,96$. Então é só fazer:
+Se for considerado um intervalo de confiança de 95%, o z de 95% em uma
+distribuição normal é aproximadamente $\pm 1,96$. Então é só fazer:
 
 ```{r}
 # numero de amostras, o "tamanho" (length) dos dados
@@ -67,8 +67,8 @@ ic <- 1.96 * desvio / sqrt(n)
 media; media + ic; media - ic
 ```
 
-As amostras que tenham entre esses valores de média tem 95% de
-probabilidade de pertencerem à essa população. Dá pra visualizar:
+As amostras que tenham entre esses valores de média possuem 95% de
+chance de pertencerem à essa população. Para tentar visualizar:
 
 ```{r}
 plot(density(dados_normalizados))  + abline(v = ic) + abline(v = -ic)
@@ -76,7 +76,7 @@ plot(density(dados_normalizados))  + abline(v = ic) + abline(v = -ic)
 
 ### e) Teste se essa distribuição é normal. Discuta.
 
-Pra testar a normalidade é possível usar o teste de Shapiro-Wilk. A hipótese
+Para testar a normalidade é possível usar o teste de Shapiro-Wilk. A hipótese
 do teste é de que a distribuição é normal. Se o p-valor for maior que 0,05
 aceita-se a hipótese nula, a distruição é normal. Se for menor, rejeita-se a
 hipótese, a distribuição não é normal.
@@ -85,13 +85,13 @@ hipótese, a distribuição não é normal.
 shapiro.test(dados_normalizados)
 ```
 
-O p-valor é menor que 0,05, então a distribuição não é normal (dá pra ver
+O p-valor é menor que 0,05, então a distribuição não é normal (é possível ver
 nos gráficos acima que não é, mesmo sem o teste)
 
 # Exercício 2
 ### Utilizando o dataset mtcars:
 
-mtcars é um dataset que vem junto com o R. Dá para usar para fazer
+mtcars é um dataset que vem junto com o R. É usado para fazer
 testes/treinar. Para ver o dataset é só usar `mtcars`:
 
 ```{r}
@@ -128,7 +128,7 @@ A função `cor` não calcula o p-valor, tem que usar a `cor.test` ou outra que 
 isso:
 
 ```{r}
-# pra calcular as correlacoes:
+# calculando as correlacoes:
 cor_mpg_disp <- cor.test(mtcars$mpg, mtcars$disp)
 cor_carb_drat <- cor.test(mtcars$carb, mtcars$drat)
 

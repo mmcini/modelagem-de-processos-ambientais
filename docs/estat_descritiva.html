@@ -240,7 +240,7 @@
 </div>
 <div id="b-utilize-a-função-pnorm-para-calcular-a-função-de-densidade-acumulada-px-para-toda-a-série-o-que-significa-o-primeiro-valor-dessa-série" class="section level3">
 <h3>b) Utilize a função pnorm() para calcular a função de densidade acumulada (P(x)) para toda a série, o que significa o primeiro valor dessa série?</h3>
-<p>A função <code>pnorm</code> retorna a probabilidade acumulada de um população. Pra usar tem que informar qual a média e qual o desvio padrão da população:</p>
+<p>A função <code>pnorm</code> retorna a probabilidade acumulada de um população. Para usar, é necessário informar qual a média e qual o desvio padrão da população:</p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" title="1">media &lt;-<span class="st"> </span><span class="kw">mean</span>(dados)</a>
 <a class="sourceLine" id="cb5-2" title="2">desvio &lt;-<span class="st"> </span><span class="kw">sd</span>(dados)</a>
 <a class="sourceLine" id="cb5-3" title="3"><span class="kw">pnorm</span>(dados, <span class="dt">mean =</span> media, <span class="dt">sd =</span> desvio)</a></code></pre></div>
@@ -252,20 +252,20 @@
 <div id="c-normalize-os-dados-com-média-zero-e-desvio-padrão-unitário-utilize-apenas-as-funções-mean-e-sd-para-tal" class="section level3">
 <h3>c) Normalize os dados com média zero e desvio padrão unitário, utilize apenas as funções mean() e sd() para tal</h3>
 <p>Os dados podem ser normalizados com a diferença de cada valor até a média dividido pelo desvio padrão, com a expressão: <span class="math display">\[\frac{x-\overline{X}}{S}\]</span></p>
-<p>Onde <span class="math inline">\(x\)</span> é cada valor, <span class="math inline">\(\overline{X}\)</span> é a média e <span class="math inline">\(S\)</span> o desivio padrão. Então da pra fazer:</p>
+<p>Onde <span class="math inline">\(x\)</span> é cada valor, <span class="math inline">\(\overline{X}\)</span> é a média e <span class="math inline">\(S\)</span> o desivio padrão. Então podemos fazer:</p>
 <div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" title="1">dados_normalizados &lt;-<span class="st"> </span>(dados <span class="op">-</span><span class="st"> </span>media) <span class="op">/</span><span class="st"> </span>desvio</a>
 <a class="sourceLine" id="cb7-2" title="2">dados_normalizados</a></code></pre></div>
 <pre><code>##  [1] -1.3093864  0.2014441 -1.0072203  1.1079423  1.4101084 -0.7050542
 ##  [7]  0.8057762  0.5036102 -1.0072203 -1.3093864 -1.3093864  0.2014441
 ## [13]  0.5036102  0.8057762  1.1079423</code></pre>
-<p>Essa expressão dá os valores do eixo x para uma distribuição de média zero e desvio padrão igual a 1. Dá pra visualizar assim:</p>
+<p>Essa expressão fornece os valores do eixo x para uma distribuição de média zero e desvio padrão igual a 1. É possível visualizar assim:</p>
 <div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" title="1"><span class="kw">plot</span>(<span class="kw">density</span>(dados_normalizados))</a></code></pre></div>
 <p><img src="estat_descritiva_files/figure-html/unnamed-chunk-5-1.png" width="768" /></p>
 </div>
 <div id="d-calcule-os-intervalos-de-confiança-da-média" class="section level3">
 <h3>d) Calcule os intervalos de confiança da média</h3>
 <p>Cada valor do resultado do item anterior é o valor z (o eixo x) dos dados normalizados. O intervalo de confiança é calculado por: <span class="math display">\[IC = z \times \frac{S}{\sqrt{n}}\]</span></p>
-<p>Considerando um intervalo de confiança de 95%, como ele explicou na aula, o z de 95% em uma distribuição normal é <span class="math inline">\(\pm 1,96\)</span>. Então é só fazer:</p>
+<p>Se for considerado um intervalo de confiança de 95%, o z de 95% em uma distribuição normal é aproximadamente <span class="math inline">\(\pm 1,96\)</span>. Então é só fazer:</p>
 <div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" title="1"><span class="co"># numero de amostras, o &quot;tamanho&quot; (length) dos dados</span></a>
 <a class="sourceLine" id="cb10-2" title="2">n &lt;-<span class="st"> </span><span class="kw">length</span>(dados)</a>
 <a class="sourceLine" id="cb10-3" title="3">ic &lt;-<span class="st"> </span><span class="fl">1.96</span> <span class="op">*</span><span class="st"> </span>desvio <span class="op">/</span><span class="st"> </span><span class="kw">sqrt</span>(n)</a>
@@ -274,28 +274,28 @@
 <pre><code>## [1] 44.33333</code></pre>
 <pre><code>## [1] 46.00814</code></pre>
 <pre><code>## [1] 42.65853</code></pre>
-<p>As amostras que tenham entre esses valores de média tem 95% de probabilidade de pertencerem à essa população. Dá pra visualizar:</p>
+<p>As amostras que tenham entre esses valores de média possuem 95% de chance de pertencerem à essa população. Para tentar visualizar:</p>
 <div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb14-1" title="1"><span class="kw">plot</span>(<span class="kw">density</span>(dados_normalizados))  <span class="op">+</span><span class="st"> </span><span class="kw">abline</span>(<span class="dt">v =</span> ic) <span class="op">+</span><span class="st"> </span><span class="kw">abline</span>(<span class="dt">v =</span> <span class="op">-</span>ic)</a></code></pre></div>
 <p><img src="estat_descritiva_files/figure-html/unnamed-chunk-7-1.png" width="768" /></p>
 <pre><code>## integer(0)</code></pre>
 </div>
 <div id="e-teste-se-essa-distribuição-é-normal.-discuta." class="section level3">
 <h3>e) Teste se essa distribuição é normal. Discuta.</h3>
-<p>Pra testar a normalidade é possível usar o teste de Shapiro-Wilk. A hipótese do teste é de que a distribuição é normal. Se o p-valor for maior que 0,05 aceita-se a hipótese nula, a distruição é normal. Se for menor, rejeita-se a hipótese, a distribuição não é normal.</p>
+<p>Para testar a normalidade é possível usar o teste de Shapiro-Wilk. A hipótese do teste é de que a distribuição é normal. Se o p-valor for maior que 0,05 aceita-se a hipótese nula, a distruição é normal. Se for menor, rejeita-se a hipótese, a distribuição não é normal.</p>
 <div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb16-1" title="1"><span class="kw">shapiro.test</span>(dados_normalizados)</a></code></pre></div>
 <pre><code>## 
 ##  Shapiro-Wilk normality test
 ## 
 ## data:  dados_normalizados
 ## W = 0.87911, p-value = 0.04601</code></pre>
-<p>O p-valor é menor que 0,05, então a distribuição não é normal (dá pra ver nos gráficos acima que não é, mesmo sem o teste)</p>
+<p>O p-valor é menor que 0,05, então a distribuição não é normal (é possível ver nos gráficos acima que não é, mesmo sem o teste)</p>
 </div>
 </div>
 <div id="exercício-2" class="section level1">
 <h1>Exercício 2</h1>
 <div id="utilizando-o-dataset-mtcars" class="section level3">
 <h3>Utilizando o dataset mtcars:</h3>
-<p>mtcars é um dataset que vem junto com o R. Dá para usar para fazer testes/treinar. Para ver o dataset é só usar <code>mtcars</code>:</p>
+<p>mtcars é um dataset que vem junto com o R. É usado para fazer testes/treinar. Para ver o dataset é só usar <code>mtcars</code>:</p>
 <div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb18-1" title="1"><span class="co"># `head` para ver apenas o cabecalho dos dados</span></a>
 <a class="sourceLine" id="cb18-2" title="2"><span class="kw">head</span>(mtcars)</a></code></pre></div>
 <pre><code>##                    mpg cyl disp  hp drat    wt  qsec vs am gear carb
@@ -506,7 +506,7 @@
 <h3>c) Dos pares escolhidos, podemos dizer que são estaticamente significativos em 5% de significância? Discuta.</h3>
 <p>A hipótese do teste de correlação de pearson é de que não há correlação significativa entre dois dados. Assim, se o p-valor for maior que 0,05 (5% de significância), aceita-se que não há correlação significativa. Senão, rejeita-se a hipótese e considera-se que há sim correlação.</p>
 <p>A função <code>cor</code> não calcula o p-valor, tem que usar a <code>cor.test</code> ou outra que faça isso:</p>
-<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb23-1" title="1"><span class="co"># pra calcular as correlacoes:</span></a>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb23-1" title="1"><span class="co"># calculando as correlacoes:</span></a>
 <a class="sourceLine" id="cb23-2" title="2">cor_mpg_disp &lt;-<span class="st"> </span><span class="kw">cor.test</span>(mtcars<span class="op">$</span>mpg, mtcars<span class="op">$</span>disp)</a>
 <a class="sourceLine" id="cb23-3" title="3">cor_carb_drat &lt;-<span class="st"> </span><span class="kw">cor.test</span>(mtcars<span class="op">$</span>carb, mtcars<span class="op">$</span>drat)</a>
 <a class="sourceLine" id="cb23-4" title="4"></a>
