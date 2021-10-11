@@ -13,5 +13,6 @@ output:
     theme: cosmo
     highlight: textmate
     toc: true
+    toc_depth: 1
     toc_float:
       collapse: false

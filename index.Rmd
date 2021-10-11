@@ -1,6 +1,6 @@
 ---
-title: "Exercícios de Modelage"
+title: "Exercícios de Modelagem"
 output: html_document
 ---
 
-Exercícios nas abas acima.
+Alguns exercícios comentados nas abas acima.
