@@ -4,7 +4,7 @@ output: rmdformats::readthedown
 ---
 
 # Exercício 1
-### Crie o vetor x = 3, 3.1, 3.2,…,6. Note que o vetor deve ir até o número 6 num incremento de 0.1
+### Crie o vetor x = 3, 3.1, 3.2,…,6. Note que o vetor deve ir até o número 6 num incremento de 0.1.
 
 A documentação diz:
 
@@ -21,7 +21,7 @@ x
 ```
 
 # Exercício 2
-### Calcule e^x^cos(x) para o vetor anterior, atribua ao objeto solução. Descreva os atributos desse novo objeto criado;
+### Calcule e^x^cos(x) para o vetor anterior, atribua ao objeto solução. Descreva os atributos desse novo objeto criado.
 
 É só fazer exp(x) * cos(x).
 
@@ -65,7 +65,7 @@ dados_decrescentes[1:3]
 ```
 
 # Exercício 6
-### Indique um código que trará a posição do ranking da América do Sul no objeto islands;
+### Indique um código que trará a posição do ranking da América do Sul no objeto islands.
 
 Podemos usar `rank` para saber o ranking dos dados. Mas a função
 atribui o "maior" ranking (ranking número 1) para o menor valor. Então Vancouver, que
@@ -112,17 +112,14 @@ Os vetores são:
 ```{r}
 vec1
 ```
-
 #### Vetor 2
 ```{r}
 vec2
 ```
-
 #### Vetor 3
 ```{r}
 vec3
 ```
-
 #### Vetor 4
 ```{r}
 vec4

@@ -232,8 +232,8 @@
 <p>Os dados são:</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" title="1">dados &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">40</span>, <span class="dv">45</span>, <span class="dv">41</span>, <span class="dv">48</span>, <span class="dv">49</span>, <span class="dv">42</span>, <span class="dv">47</span>, <span class="dv">46</span>, <span class="dv">41</span>, <span class="dv">40</span>, <span class="dv">40</span>, <span class="dv">45</span>, <span class="dv">46</span>, <span class="dv">47</span>, <span class="dv">48</span>)</a></code></pre></div>
 </div>
-<div id="a-calcule-a-média-variância" class="section level3">
-<h3>a) Calcule a média, variância</h3>
+<div id="a-calcule-a-média-variância." class="section level3">
+<h3>a) Calcule a média, variância.</h3>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" title="1"><span class="kw">mean</span>(dados); <span class="kw">var</span>(dados)</a></code></pre></div>
 <pre><code>## [1] 44.33333</code></pre>
 <pre><code>## [1] 10.95238</code></pre>
@@ -249,8 +249,8 @@
 ## [13] 0.69273232 0.78981406 0.86605664</code></pre>
 <p>O primeiro valor dos resultados é a probabilidade de um valor ser menor que 40 (o primeiro valor dos <code>dados</code>)</p>
 </div>
-<div id="c-normalize-os-dados-com-média-zero-e-desvio-padrão-unitário-utilize-apenas-as-funções-mean-e-sd-para-tal" class="section level3">
-<h3>c) Normalize os dados com média zero e desvio padrão unitário, utilize apenas as funções mean() e sd() para tal</h3>
+<div id="c-normalize-os-dados-com-média-zero-e-desvio-padrão-unitário-utilize-apenas-as-funções-mean-e-sd-para-tal." class="section level3">
+<h3>c) Normalize os dados com média zero e desvio padrão unitário, utilize apenas as funções mean() e sd() para tal.</h3>
 <p>Os dados podem ser normalizados com a diferença de cada valor até a média dividido pelo desvio padrão, com a expressão: <span class="math display">\[\frac{x-\overline{X}}{S}\]</span></p>
 <p>Onde <span class="math inline">\(x\)</span> é cada valor, <span class="math inline">\(\overline{X}\)</span> é a média e <span class="math inline">\(S\)</span> o desivio padrão. Então podemos fazer:</p>
 <div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" title="1">dados_normalizados &lt;-<span class="st"> </span>(dados <span class="op">-</span><span class="st"> </span>media) <span class="op">/</span><span class="st"> </span>desvio</a>
@@ -262,8 +262,8 @@
 <div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" title="1"><span class="kw">plot</span>(<span class="kw">density</span>(dados_normalizados))</a></code></pre></div>
 <p><img src="estat_descritiva_files/figure-html/unnamed-chunk-5-1.png" width="768" /></p>
 </div>
-<div id="d-calcule-os-intervalos-de-confiança-da-média" class="section level3">
-<h3>d) Calcule os intervalos de confiança da média</h3>
+<div id="d-calcule-os-intervalos-de-confiança-da-média." class="section level3">
+<h3>d) Calcule os intervalos de confiança da média.</h3>
 <p>Cada valor do resultado do item anterior é o valor z (o eixo x) dos dados normalizados. O intervalo de confiança é calculado por: <span class="math display">\[IC = z \times \frac{S}{\sqrt{n}}\]</span></p>
 <p>Se for considerado um intervalo de confiança de 95%, o z de 95% em uma distribuição normal é aproximadamente <span class="math inline">\(\pm 1,96\)</span>. Então é só fazer:</p>
 <div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" title="1"><span class="co"># numero de amostras, o &quot;tamanho&quot; (length) dos dados</span></a>
@@ -323,8 +323,8 @@
 ##  $ gear: num  4 4 4 3 3 3 3 4 4 4 ...
 ##  $ carb: num  4 4 1 1 2 1 4 2 2 4 ...</code></pre>
 </div>
-<div id="b-calcule-uma-matriz-de-correlação-correlograma-para-toda-a-série-discuta-2-pares-a-sua-escolha" class="section level3">
-<h3>b) Calcule uma matriz de correlação (correlograma) para toda a série, discuta 2 pares a sua escolha</h3>
+<div id="b-calcule-uma-matriz-de-correlação-correlograma-para-toda-a-série-discuta-2-pares-a-sua-escolha." class="section level3">
+<h3>b) Calcule uma matriz de correlação (correlograma) para toda a série, discuta 2 pares a sua escolha.</h3>
 <p>Para calcular a matriz de correlação, usar <code>cor</code>:</p>
 <div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb22-1" title="1"><span class="kw">cor</span>(mtcars)</a></code></pre></div>
 <table>

@@ -12,7 +12,7 @@ Os dados são:
 dados <- c(40, 45, 41, 48, 49, 42, 47, 46, 41, 40, 40, 45, 46, 47, 48)
 ```
 
-### a) Calcule a média, variância
+### a) Calcule a média, variância.
 
 ```{r}
 mean(dados); var(dados)
@@ -32,7 +32,7 @@ pnorm(dados, mean = media, sd = desvio)
 O primeiro valor dos resultados é a probabilidade de um valor ser menor que
 40 (o primeiro valor dos `dados`)
 
-### c) Normalize os dados com média zero e desvio padrão unitário, utilize apenas as funções mean() e sd() para tal
+### c) Normalize os dados com média zero e desvio padrão unitário, utilize apenas as funções mean() e sd() para tal.
 
 Os dados podem ser normalizados com a diferença de cada valor até a média dividido pelo
 desvio padrão, com a expressão: $$\frac{x-\overline{X}}{S}$$
@@ -51,7 +51,7 @@ padrão igual a 1. É possível visualizar assim:
 plot(density(dados_normalizados))
 ```
 
-### d) Calcule os intervalos de confiança da média
+### d) Calcule os intervalos de confiança da média.
 
 Cada valor do resultado do item anterior é o valor z (o eixo x) dos dados normalizados.
 O intervalo de confiança é calculado por: $$IC = z \times \frac{S}{\sqrt{n}}$$
@@ -107,7 +107,7 @@ Para ver a estrutura, usar `str`:
 str(mtcars)
 ```
 
-### b) Calcule uma matriz de correlação (correlograma) para toda a série, discuta 2 pares a sua escolha
+### b) Calcule uma matriz de correlação (correlograma) para toda a série, discuta 2 pares a sua escolha.
 
 Para calcular a matriz de correlação, usar `cor`:
 
